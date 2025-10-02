@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{% block title %}Mihaila Smart Solutions{% endblock %}</title>
+  <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <style>
+    /* FUNDAL (garantat) */
+    body{
+      margin:0; font-family:Arial, sans-serif;
+      background: url("{% static 'team.jpg' %}") no-repeat center center fixed;
+      background-size: cover; color:#fff;
+    }
+    /* Overlay pt contrast */
+    .overlay{ position:fixed; inset:0; background:rgba(0,0,0,.40); z-index:-1; }
+    /* fallback minim */
+    header{position:fixed;top:0;left:0;width:100%;display:flex;justify-content:space-between;align-items:center;
+      padding:14px 24px;background:rgba(0,0,0,.92);border-bottom:1px solid rgba(255,215,0,.25);z-index:10}
+    .logo{height:46px}
+    nav a{color:#FFD700;text-decoration:none;margin:0 10px;font-weight:700}
+    nav a:hover{color:#fff}
+    .page{padding:120px 16px 90px;max-width:1100px;margin:0 auto}
+    footer{position:fixed;bottom:0;left:0;width:100%;text-align:center;background:rgba(0,0,0,.92);
+      padding:12px;color:#bdbdbd;font-size:14px;border-top:1px solid rgba(255,215,0,.25)}
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+
+  <header>
+    <a href="/"><img src="{% static 'logo.png' %}" alt="Mihaila Smart Solutions" class="logo"></a>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/about/">About</a>
+      <a href="/services/">Services</a>
+      <a href="/projects/">Projects</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>© 2025 Mihaila Smart Solutions. All rights reserved.</footer>
+
+  <!-- WhatsApp flotant -->
+  <a class="whatsapp" href="https://wa.me/40721521109" target="_blank" aria-label="WhatsApp"
+     style="position:fixed;right:18px;bottom:84px;background:#25D366;color:#fff;border-radius:50%;
+            width:56px;height:56px;display:flex;align-items:center;justify-content:center;
+            text-decoration:none;font-weight:900;">WA</a>
+</body>
+</html>
