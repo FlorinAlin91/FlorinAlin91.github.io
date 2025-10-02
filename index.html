@@ -5,31 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mihaila Smart Solutions</title>
   <style>
-    :root { --bg:#0b0b0e; --fg:#f7f7f7; --gold:#c9a227; --muted:#9aa0a6; }
-    html,body { margin:0; height:100%; background:var(--bg); color:var(--fg); font:16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif; }
-    header { position:sticky; top:0; backdrop-filter:saturate(160%) blur(6px); background:rgba(11,11,14,.6); border-bottom:1px solid rgba(201,162,39,.2); z-index:20; }
+    :root { --bg:#0b0b0e; --fg:#f7f7f7; --gold:#c9a227; --muted:#9aa0a6; --card:#0f1016; }
+    * { box-sizing:border-box; }
+    html,body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.5 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    a { color:inherit; }
+    header { position:sticky; top:0; background:rgba(11,11,14,.7); backdrop-filter:saturate(160%) blur(6px); border-bottom:1px solid rgba(201,162,39,.2); z-index:20; }
     .wrap { max-width:1100px; margin:0 auto; padding:14px 20px; display:flex; align-items:center; gap:16px; }
-    .brand { display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--fg); font-weight:600; letter-spacing:.2px; }
+    .brand { display:flex; align-items:center; gap:10px; text-decoration:none; font-weight:700; letter-spacing:.2px; }
     .brand img { width:36px; height:36px; object-fit:contain; }
     .spacer { flex:1; }
     .lang { display:flex; gap:8px; }
-    .lang button { background:#111216; color:var(--fg); border:1px solid rgba(201,162,39,.4); padding:8px 12px; border-radius:999px; cursor:pointer; font-weight:600; letter-spacing:.2px; }
+    .lang button { background:#111216; color:var(--fg); border:1px solid rgba(201,162,39,.45); padding:8px 12px; border-radius:999px; cursor:pointer; font-weight:700; }
     .lang button[aria-pressed="true"] { background:var(--gold); color:#0b0b0e; border-color:var(--gold); }
-    main { max-width:1100px; margin:0 auto; padding:24px 20px 60px; }
-    .hero { display:grid; grid-template-columns: 1.2fr .8fr; gap:28px; align-items:center; padding:28px 0 8px; }
-    .hero h1 { font-size:clamp(26px, 4vw, 40px); margin:0 0 10px; }
+    main { max-width:1100px; margin:0 auto; padding:28px 20px 60px; }
+    .hero { display:grid; grid-template-columns:1.2fr .8fr; gap:28px; align-items:center; padding:18px 0 8px; }
+    .hero h1 { font-size:clamp(28px, 4.4vw, 44px); margin:0 0 10px; }
     .hero p { color:var(--muted); margin:0 0 16px; }
-    .cta { display:flex; gap:12px; flex-wrap:wrap; margin-top:8px; }
-    .cta a { text-decoration:none; background:var(--gold); color:#0b0b0e; padding:12px 14px; border-radius:12px; font-weight:700; }
+    .cta { display:flex; gap:12px; flex-wrap:wrap; margin-top:10px; }
+    .cta a { text-decoration:none; background:var(--gold); color:#0b0b0e; padding:12px 14px; border-radius:12px; font-weight:800; }
     .section { margin-top:40px; }
     .section h2 { margin:0 0 10px; font-size:22px; }
-    .grid { display:grid; grid-template-columns: repeat(auto-fill,minmax(220px,1fr)); gap:14px; }
-    .card { background:#0f1016; border:1px solid rgba(201,162,39,.18); border-radius:14px; padding:12px; }
+    /* our work grid like before, smaller thumbs */
+    .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:14px; }
+    .card { background:var(--card); border:1px solid rgba(201,162,39,.18); border-radius:14px; padding:10px; }
     .card img { width:100%; height:140px; object-fit:cover; border-radius:10px; display:block; }
     .meta { display:flex; justify-content:space-between; align-items:center; margin-top:8px; color:var(--muted); font-size:14px; }
-    .contact { display:grid; grid-template-columns: 1fr 1fr; gap:18px; }
+    .contact { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
     .contact a { color:var(--gold); text-decoration:none; }
-    footer { opacity:.7; text-align:center; padding:24px; border-top:1px solid rgba(201,162,39,.18); margin-top:40px; }
+    footer { opacity:.7; text-align:center; padding:24px; border-top:1px solid rgba(201,162,39,.18); margin-top:40px; font-size:14px; }
     @media (max-width:860px){ .hero{ grid-template-columns:1fr; } .contact{ grid-template-columns:1fr; } }
   </style>
 </head>
@@ -37,7 +40,7 @@
   <header>
     <div class="wrap">
       <a class="brand" href="#" aria-label="Mihaila Smart Solutions">
-        <img src="/assets/logo.svg" alt="MSS logo" />
+        <img src="assets/logo.svg" alt="MSS logo" />
         <span data-i18n="brand">Mihaila Smart Solutions</span>
       </a>
       <div class="spacer"></div>
@@ -61,7 +64,7 @@
         </div>
       </div>
       <div>
-        <img src="/assets/hero-team.jpg" alt="Our team at work" style="width:100%;height:auto;border-radius:16px;border:1px solid rgba(201,162,39,.25)"/>
+        <img src="assets/hero-team.jpg" alt="Our team at work" style="width:100%;height:auto;border-radius:16px;border:1px solid rgba(201,162,39,.25)"/>
       </div>
     </section>
 
@@ -76,35 +79,35 @@
       <h2 data-i18n="work.heading">Our work</h2>
       <div class="grid">
         <article class="card">
-          <img src="/assets/projects/hamburg.jpg" alt="Hamburg project" />
+          <img src="assets/projects/hamburg.jpg" alt="Hamburg project" />
           <div class="meta"><span>Hamburg</span><span data-i18n="work.type">Data center</span></div>
         </article>
         <article class="card">
-          <img src="/assets/projects/lulea.jpg" alt="Luleå project" />
+          <img src="assets/projects/lulea.jpg" alt="Luleå project" />
           <div class="meta"><span>Luleå</span><span data-i18n="work.type">Data center</span></div>
         </article>
         <article class="card">
-          <img src="/assets/projects/groningen.jpg" alt="Groningen project" />
+          <img src="assets/projects/groningen.jpg" alt="Groningen project" />
           <div class="meta"><span>Groningen</span><span data-i18n="work.type">Data center</span></div>
         </article>
         <article class="card">
-          <img src="/assets/projects/frankfurt.jpg" alt="Frankfurt project" />
+          <img src="assets/projects/frankfurt.jpg" alt="Frankfurt project" />
           <div class="meta"><span>Frankfurt</span><span data-i18n="work.type">Data center</span></div>
         </article>
         <article class="card">
-          <img src="/assets/projects/paris.jpg" alt="Paris project" />
+          <img src="assets/projects/paris.jpg" alt="Paris project" />
           <div class="meta"><span>Paris</span><span data-i18n="work.type">Data center</span></div>
         </article>
         <article class="card">
-          <img src="/assets/projects/hanau.jpg" alt="Hanau project" />
+          <img src="assets/projects/hanau.jpg" alt="Hanau project" />
           <div class="meta"><span>Hanau</span><span data-i18n="work.type">Data center</span></div>
         </article>
         <article class="card">
-          <img src="/assets/projects/netherlands.jpg" alt="Netherlands project" />
+          <img src="assets/projects/netherlands.jpg" alt="Netherlands project" />
           <div class="meta"><span>Netherlands</span><span data-i18n="work.type">Data center</span></div>
         </article>
         <article class="card">
-          <img src="/assets/projects/sweden.jpg" alt="Sweden project" />
+          <img src="assets/projects/sweden.jpg" alt="Sweden project" />
           <div class="meta"><span>Sweden</span><span data-i18n="work.type">Data center</span></div>
         </article>
       </div>
@@ -128,7 +131,7 @@
     <small>© <span id="year"></span> <span data-i18n="brand">Mihaila Smart Solutions</span> · <span data-i18n="footer.rights">All rights reserved.</span></small>
   </footer>
 
-  <!-- Inline translations (you can move to /assets/i18n.js later) -->
+  <!-- Translations -->
   <script type="application/json" id="i18n-json">
   {
     "en": {
@@ -170,10 +173,10 @@
       "hero.title": "Intelligente, zuverlässige Rechenzentrumslösungen in ganz Europa.",
       "hero.lead": "Wir planen, installieren und überwachen Brand- und Sicherheitssysteme mit Präzision und Tempo.",
       "cta.whatsapp": "Schreib uns auf WhatsApp",
-      "cta.email": "Schick uns eine E‑Mail",
+      "cta.email": "Schick uns eine E-Mail",
       "cta.linkedin": "LinkedIn",
       "about.heading": "Über uns",
-      "about.body": "Wir haben von ganz unten angefangen – mit Ehrgeiz, Disziplin und harter Arbeit. Heute liefern wir europäische Qualität und On‑Site‑Supervision für jedes Projekt.",
+      "about.body": "Wir haben von ganz unten angefangen – mit Ehrgeiz, Disziplin und harter Arbeit. Heute liefern wir europäische Qualität und On-Site-Supervision für jedes Projekt.",
       "work.heading": "Unsere Projekte",
       "work.type": "Rechenzentrum",
       "contact.heading": "Kontakt",
@@ -186,12 +189,11 @@
   </script>
 
   <script>
-    // --------- i18n core (pro, controlled) ---------
+    // i18n core
     const I18N = (() => {
       const storeKey = 'mss.lang';
       const data = JSON.parse(document.getElementById('i18n-json').textContent);
       const supported = Object.keys(data);
-
       function detect() {
         const urlLang = new URLSearchParams(location.search).get('lang');
         if (urlLang && supported.includes(urlLang)) return urlLang;
@@ -199,7 +201,6 @@
         if (saved && supported.includes(saved)) return saved;
         return 'en';
       }
-
       function apply(lang) {
         const dict = data[lang] || data.en;
         document.documentElement.lang = lang;
@@ -207,17 +208,14 @@
           const key = el.getAttribute('data-i18n');
           if (dict[key]) el.textContent = dict[key];
         });
-        // toggle buttons
         document.querySelectorAll('[data-lang]').forEach(btn => {
           btn.setAttribute('aria-pressed', String(btn.dataset.lang === lang));
         });
-        // persist & keep URL clean
         localStorage.setItem(storeKey, lang);
         const url = new URL(location);
         url.searchParams.set('lang', lang);
         history.replaceState({}, '', url);
       }
-
       return { detect, apply };
     })();
 
@@ -230,14 +228,15 @@
       btn.addEventListener('click', () => I18N.apply(btn.dataset.lang));
     });
 
-    // year
+    // footer year
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 
-  <!-- Optional: SEO hreflang (use your real URLs) -->
+  <!-- Optional SEO hreflang -->
   <link rel="alternate" href="https://mihailasmartsolutions.co/?lang=en" hreflang="en" />
   <link rel="alternate" href="https://mihailasmartsolutions.co/?lang=ro" hreflang="ro" />
   <link rel="alternate" href="https://mihailasmartsolutions.co/?lang=de" hreflang="de" />
 </body>
 </html>
+
 
