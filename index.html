@@ -1,244 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Mihaila Smart Solutions</title>
   <style>
     :root { --bg:#0b0b0e; --fg:#f7f7f7; --gold:#c9a227; --muted:#9aa0a6; --card:#0f1016; }
     * { box-sizing:border-box; }
     html,body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.5 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
-    a { color:inherit; }
-    header { position:sticky; top:0; background:rgba(11,11,14,.7); backdrop-filter:saturate(160%) blur(6px); border-bottom:1px solid rgba(201,162,39,.2); z-index:20; }
+    a { color:inherit; text-decoration:none; }
+    header { position:sticky; top:0; background:rgba(11,11,14,.7); border-bottom:1px solid rgba(201,162,39,.2); backdrop-filter:saturate(160%) blur(6px); z-index:20; }
     .wrap { max-width:1100px; margin:0 auto; padding:14px 20px; display:flex; align-items:center; gap:16px; }
-    .brand { display:flex; align-items:center; gap:10px; text-decoration:none; font-weight:700; letter-spacing:.2px; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:800; }
     .brand img { width:36px; height:36px; object-fit:contain; }
+    nav.main { display:flex; gap:16px; margin-left:8px; }
+    nav.main a { padding:6px 10px; border-radius:10px; }
+    nav.main a:hover { background:#14151a; }
     .spacer { flex:1; }
-    .lang { display:flex; gap:8px; }
+    .lang { display:flex; gap:8px; margin-right:10px; }
     .lang button { background:#111216; color:var(--fg); border:1px solid rgba(201,162,39,.45); padding:8px 12px; border-radius:999px; cursor:pointer; font-weight:700; }
-    .lang button[aria-pressed="true"] { background:var(--gold); color:#0b0b0e; border-color:var(--gold); }
+    .lang button[aria-pressed="true"]{ background:var(--gold); color:#0b0b0e; border-color:var(--gold); }
+    .contact-btn { background:var(--gold); color:#0b0b0e; padding:8px 12px; border-radius:12px; font-weight:800; }
+
     main { max-width:1100px; margin:0 auto; padding:28px 20px 60px; }
-    .hero { display:grid; grid-template-columns:1.2fr .8fr; gap:28px; align-items:center; padding:18px 0 8px; }
-    .hero h1 { font-size:clamp(28px, 4.4vw, 44px); margin:0 0 10px; }
-    .hero p { color:var(--muted); margin:0 0 16px; }
-    .cta { display:flex; gap:12px; flex-wrap:wrap; margin-top:10px; }
-    .cta a { text-decoration:none; background:var(--gold); color:#0b0b0e; padding:12px 14px; border-radius:12px; font-weight:800; }
+    .hero { display:grid; grid-template-columns:1.2fr .8fr; gap:28px; align-items:center; padding:18px 0; }
+    .hero h1 { font-size:clamp(28px,4.4vw,44px); margin:0 0 12px; }
+    .hero p { color:var(--muted); margin:0 0 18px; }
+    .cta { display:flex; gap:12px; flex-wrap:wrap; }
+    .cta a { background:var(--gold); color:#0b0b0e; padding:12px 14px; border-radius:12px; font-weight:800; }
+    .cta a.ghost { background:transparent; border:1px solid rgba(201,162,39,.45); color:var(--fg); }
+
     .section { margin-top:40px; }
-    .section h2 { margin:0 0 10px; font-size:22px; }
+    .section h2 { margin:0 0 12px; font-size:22px; }
     .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:14px; }
-    .card { background:var(--card); border:1px solid rgba(201,162,39,.18); border-radius:14px; padding:10px; }
-    .card img { width:100%; height:140px; object-fit:cover; border-radius:10px; display:block; }
+    .card { background:var(--card); border:1px solid rgba(201,162,39,.18); border-radius:16px; padding:18px; }
+    .thumb { padding:10px; background:var(--card); border:1px solid rgba(201,162,39,.18); border-radius:16px; }
+    .thumb img { width:100%; height:140px; object-fit:cover; border-radius:10px; display:block; }
     .meta { display:flex; justify-content:space-between; align-items:center; margin-top:8px; color:var(--muted); font-size:14px; }
-    .contact { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
-    .contact a { color:var(--gold); text-decoration:none; }
-    footer { opacity:.7; text-align:center; padding:24px; border-top:1px solid rgba(201,162,39,.18); margin-top:40px; font-size:14px; }
-    @media (max-width:860px){ .hero{ grid-template-columns:1fr; } .contact{ grid-template-columns:1fr; } }
+    .contact a.link { color:var(--gold); }
+
+    footer { opacity:.8; padding:24px; border-top:1px solid rgba(201,162,39,.18); }
+    footer .wrap { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+    footer nav a { margin-right:14px; color:var(--gold); }
+    @media (max-width:860px){ .hero{ grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
   <header>
     <div class="wrap">
-      <a class="brand" href="#" aria-label="Mihaila Smart Solutions">
-        <img src="logo.png" alt="MSS logo" />
+      <a class="brand" href="index.html">
+        <img src="logo.png" alt="MSS logo"/>
         <span data-i18n="brand">Mihaila Smart Solutions</span>
       </a>
+      <nav class="main">
+        <a href="#services" data-i18n="nav.services">Services</a>
+        <a href="#work" data-i18n="nav.work">Our Work</a>
+        <a href="#about" data-i18n="nav.about">About</a>
+      </nav>
       <div class="spacer"></div>
       <nav class="lang" aria-label="Language selector">
         <button data-lang="en" aria-pressed="true">EN</button>
-        <button data-lang="ro" aria-pressed="false">RO</button>
-        <button data-lang="de" aria-pressed="false">DE</button>
+        <button data-lang="ro">RO</button>
+        <button data-lang="de">DE</button>
       </nav>
+      <a class="contact-btn" href="#contact" data-i18n="nav.contact.btn">Contact</a>
     </div>
   </header>
 
   <main>
+    <!-- HERO -->
     <section class="hero">
       <div>
-        <h1 data-i18n="hero.title">Smart, reliable data center solutions across Europe.</h1>
-        <p data-i18n="hero.lead">We design, install, and supervise fire & security systems with precision and speed.</p>
+        <h1 data-i18n="hero.title">From ambition to reality — built with vision, precision and determination.</h1>
+        <p data-i18n="hero.lead">Construction support across Europe & EMEA.</p>
         <div class="cta">
-          <a href="https://wa.me/40721521109" target="_blank" rel="noopener" data-i18n="cta.whatsapp">WhatsApp us</a>
-          <a href="mailto:office@mihailasmartsolutions.co" data-i18n="cta.email">Email us</a>
-          <a href="https://www.linkedin.com/in/florin-alin-mih%C4%83il%C4%83-aa0586224" target="_blank" rel="noopener" data-i18n="cta.linkedin">LinkedIn</a>
+          <a href="mailto:office@mihailasmartsolutions.co" data-i18n="hero.cta.quote">Get a quote</a>
+          <a class="ghost" href="#services" data-i18n="hero.cta.services">Our services</a>
         </div>
       </div>
       <div>
-        <img src="hero.jpg" alt="Our team at work" style="width:100%;height:auto;border-radius:16px;border:1px solid rgba(201,162,39,.25)"/>
+        <img src="hero.jpg" alt="Team at work" style="width:100%;height:auto;border-radius:16px;border:1px solid rgba(201,162,39,.25)"/>
       </div>
     </section>
 
+    <!-- SERVICES on home (exact ca în poze) -->
+    <section class="section" id="services">
+      <h2 data-i18n="services.title">Services</h2>
+
+      <div class="card">
+        <h3 style="margin:0 0 6px" data-i18n="svc.1.title">Logistics support on site</h3>
+        <p style="margin:0;color:var(--muted)" data-i18n="svc.1.body">End-to-end coordination for materials, access and flows.</p>
+      </div>
+
+      <div class="card">
+        <h3 style="margin:0 0 6px" data-i18n="svc.2.title">Site set-up</h3>
+        <p style="margin:0;color:var(--muted)" data-i18n="svc.2.body">Welfare & office set-up, site rules, inductions.</p>
+      </div>
+
+      <div class="card">
+        <h3 style="margin:0 0 6px" data-i18n="svc.3.title">Provision of labour & operators</h3>
+        <p style="margin:0;color:var(--muted)" data-i18n="svc.3.body">Forklift, moffits, plant operators as required.</p>
+      </div>
+
+      <div class="card">
+        <h3 style="margin:0 0 6px" data-i18n="svc.4.title">Waste management</h3>
+        <p style="margin:0;color:var(--muted)" data-i18n="svc.4.body">Segregation, collection, compliance and reporting.</p>
+      </div>
+
+      <div class="card">
+        <h3 style="margin:0 0 6px" data-i18n="svc.5.title">Plant & access equipment</h3>
+        <p style="margin:0;color:var(--muted)" data-i18n="svc.5.body">Procuring and coordinating access & lifting equipment.</p>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
     <section class="section" id="about">
-      <h2 data-i18n="about.heading">About us</h2>
-      <p data-i18n="about.body">
-        We started from the ground up—with ambition, discipline, and hard work. Today we bring European-grade quality and on-site supervision to every project.
-      </p>
-    </section>
-
-    <section class="section" id="work">
-      <h2 data-i18n="work.heading">Our work</h2>
-      <div class="grid">
-        <article class="card">
-          <img src="hamburg.jpg" alt="Hamburg project" />
-          <div class="meta"><span>Hamburg</span><span data-i18n="work.type">Data center</span></div>
-        </article>
-        <article class="card">
-          <img src="lulea.jpg" alt="Luleå project" />
-          <div class="meta"><span>Luleå</span><span data-i18n="work.type">Data center</span></div>
-        </article>
-        <article class="card">
-          <img src="groningen.jpg" alt="Groningen project" />
-          <div class="meta"><span>Groningen</span><span data-i18n="work.type">Data center</span></div>
-        </article>
-        <article class="card">
-          <img src="project4.jpg" alt="Frankfurt project" />
-          <div class="meta"><span>Frankfurt</span><span data-i18n="work.type">Data center</span></div>
-        </article>
-        <article class="card">
-          <img src="project5.jpg" alt="Paris project" />
-          <div class="meta"><span>Paris</span><span data-i18n="work.type">Data center</span></div>
-        </article>
-        <article class="card">
-          <img src="project6.jpg" alt="Hanau project" />
-          <div class="meta"><span>Hanau</span><span data-i18n="work.type">Data center</span></div>
-        </article>
-        <article class="card">
-          <img src="project7.jpg" alt="Netherlands project" />
-          <div class="meta"><span>Netherlands</span><span data-i18n="work.type">Data center</span></div>
-        </article>
-        <article class="card">
-          <img src="project8.jpg" alt="Sweden project" />
-          <div class="meta"><span>Sweden</span><span data-i18n="work.type">Data center</span></div>
-        </article>
-        <article class="card">
-          <img src="project9.jpg" alt="Norway project" />
-          <div class="meta"><span>Norway</span><span data-i18n="work.type">Data center</span></div>
-        </article>
+      <div class="card">
+        <h2 data-i18n="about.title">About</h2>
+        <p style="margin:6px 0 0;color:var(--muted)" data-i18n="about.body">
+          We started from the ground up — with hope, hard work and ambition. Today we bring reliable execution, clear communication and measurable results to every site we support.
+        </p>
       </div>
     </section>
 
+    <!-- CONTACT -->
     <section class="section contact" id="contact">
-      <div>
-        <h2 data-i18n="contact.heading">Contact</h2>
-        <p><strong data-i18n="contact.phone">Phone</strong>: <a href="https://wa.me/40721521109" target="_blank" rel="noopener">+40 721 521 109</a></p>
-        <p><strong>Email</strong>: <a href="mailto:office@mihailasmartsolutions.co">office@mihailasmartsolutions.co</a></p>
-        <p><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/florin-alin-mih%C4%83il%C4%83-aa0586224" target="_blank" rel="noopener">Florin Alin Mihăilă</a></p>
+      <div class="card">
+        <h2 data-i18n="contact.title">Contact</h2>
+        <p><strong data-i18n="contact.email">Email</strong>: <a class="link" href="mailto:office@mihailasmartsolutions.co">office@mihailasmartsolutions.co</a></p>
+        <p><strong data-i18n="contact.phone">Phone / WhatsApp</strong>: <a class="link" href="https://wa.me/40721521109" target="_blank" rel="noopener">+40 721 521 109</a></p>
+        <p><strong data-i18n="contact.linkedin">LinkedIn</strong>: <a class="link" href="https://www.linkedin.com/in/florin-alin-mih%C4%83il%C4%83-aa0586224" target="_blank" rel="noopener">linkedin.com/in/florin-alin-mihăilă</a></p>
+        <div class="cta" style="margin-top:12px">
+          <a href="mailto:office@mihailasmartsolutions.co" data-i18n="contact.cta.email">Email us</a>
+          <a class="ghost" href="https://wa.me/40721521109" target="_blank" rel="noopener" data-i18n="contact.cta.whatsapp">WhatsApp message</a>
+        </div>
+        <p style="margin-top:12px"><strong data-i18n="contact.coverage">Coverage</strong>: <span data-i18n="contact.coverage.text">Germany, Sweden, the Netherlands, France & across Europe.</span></p>
       </div>
-      <div>
-        <h2 data-i18n="contact.coverage">Coverage</h2>
-        <p data-i18n="contact.text">Germany, Sweden, the Netherlands, France & across Europe.</p>
+    </section>
+
+    <!-- OUR WORK (9 proiecte, poze din root) -->
+    <section class="section" id="work">
+      <h2 data-i18n="nav.work">Our Work</h2>
+      <div class="grid">
+        <article class="thumb"><img src="hamburg.jpg" alt="Hamburg project"/><div class="meta"><span>Hamburg</span><span data-i18n="work.type">Data center</span></div></article>
+        <article class="thumb"><img src="lulea.jpg" alt="Luleå project"/><div class="meta"><span>Luleå</span><span data-i18n="work.type">Data center</span></div></article>
+        <article class="thumb"><img src="groningen.jpg" alt="Groningen project"/><div class="meta"><span>Groningen</span><span data-i18n="work.type">Data center</span></div></article>
+        <article class="thumb"><img src="project4.jpg" alt="Frankfurt project"/><div class="meta"><span>Frankfurt</span><span data-i18n="work.type">Data center</span></div></article>
+        <article class="thumb"><img src="project5.jpg" alt="Paris project"/><div class="meta"><span>Paris</span><span data-i18n="work.type">Data center</span></div></article>
+        <article class="thumb"><img src="project6.jpg" alt="Hanau project"/><div class="meta"><span>Hanau</span><span data-i18n="work.type">Data center</span></div></article>
+        <article class="thumb"><img src="project7.jpg" alt="Netherlands project"/><div class="meta"><span>Netherlands</span><span data-i18n="work.type">Data center</span></div></article>
+        <article class="thumb"><img src="project8.jpg" alt="Sweden project"/><div class="meta"><span>Sweden</span><span data-i18n="work.type">Data center</span></div></article>
+        <article class="thumb"><img src="project9.jpg" alt="Norway project"/><div class="meta"><span>Norway</span><span data-i18n="work.type">Data center</span></div></article>
       </div>
     </section>
   </main>
 
   <footer>
-    <small>© <span id="year"></span> <span data-i18n="brand">Mihaila Smart Solutions</span> · <span data-i18n="footer.rights">All rights reserved.</span></small>
+    <div class="wrap">
+      <small>© <span id="year"></span> <span data-i18n="brand">Mihaila Smart Solutions</span></small>
+      <nav><a href="#services" data-i18n="nav.services">Services</a> <a href="#work" data-i18n="nav.work">Our Work</a> <a href="#about" data-i18n="nav.about">About</a> <a href="#contact" data-i18n="nav.contact">Contact</a></nav>
+    </div>
   </footer>
 
-  <!-- Translations -->
+  <!-- i18n dictionary inline -->
   <script type="application/json" id="i18n-json">
   {
     "en": {
-      "brand": "Mihaila Smart Solutions",
-      "hero.title": "Smart, reliable data center solutions across Europe.",
-      "hero.lead": "We design, install, and supervise fire & security systems with precision and speed.",
-      "cta.whatsapp": "WhatsApp us",
-      "cta.email": "Email us",
-      "cta.linkedin": "LinkedIn",
-      "about.heading": "About us",
-      "about.body": "We started from the ground up—with ambition, discipline, and hard work. Today we bring European-grade quality and on-site supervision to every project.",
-      "work.heading": "Our work",
-      "work.type": "Data center",
-      "contact.heading": "Contact",
-      "contact.phone": "Phone",
-      "contact.coverage": "Coverage",
-      "contact.text": "Germany, Sweden, the Netherlands, France & across Europe.",
-      "footer.rights": "All rights reserved."
+      "brand":"Mihaila Smart Solutions",
+      "nav.services":"Services","nav.work":"Our Work","nav.about":"About","nav.contact":"Contact","nav.contact.btn":"Contact",
+      "hero.title":"From ambition to reality — built with vision, precision and determination.",
+      "hero.lead":"Construction support across Europe & EMEA.",
+      "hero.cta.quote":"Get a quote","hero.cta.services":"Our services",
+      "services.title":"Services",
+      "svc.1.title":"Logistics support on site","svc.1.body":"End-to-end coordination for materials, access and flows.",
+      "svc.2.title":"Site set-up","svc.2.body":"Welfare & office set-up, site rules, inductions.",
+      "svc.3.title":"Provision of labour & operators","svc.3.body":"Forklift, moffits, plant operators as required.",
+      "svc.4.title":"Waste management","svc.4.body":"Segregation, collection, compliance and reporting.",
+      "svc.5.title":"Plant & access equipment","svc.5.body":"Procuring and coordinating access & lifting equipment.",
+      "about.title":"About",
+      "about.body":"We started from the ground up — with hope, hard work and ambition. Today we bring reliable execution, clear communication and measurable results to every site we support.",
+      "contact.title":"Contact","contact.email":"Email","contact.phone":"Phone / WhatsApp","contact.linkedin":"LinkedIn",
+      "contact.cta.email":"Email us","contact.cta.whatsapp":"WhatsApp message",
+      "contact.coverage":"Coverage","contact.coverage.text":"Germany, Sweden, the Netherlands, France & across Europe.",
+      "work.type":"Data center"
     },
     "ro": {
-      "brand": "Mihaila Smart Solutions",
-      "hero.title": "Soluții inteligente și fiabile pentru centre de date în toată Europa.",
-      "hero.lead": "Proiectăm, instalăm și supervizăm sisteme de detecție incendiu și securitate cu precizie și viteză.",
-      "cta.whatsapp": "Scrie-ne pe WhatsApp",
-      "cta.email": "Trimite-ne un e-mail",
-      "cta.linkedin": "LinkedIn",
-      "about.heading": "Despre noi",
-      "about.body": "Am pornit de jos — cu ambiție, disciplină și multă muncă. Astăzi oferim calitate la standarde europene și supervizare on-site pentru fiecare proiect.",
-      "work.heading": "Proiectele noastre",
-      "work.type": "Centru de date",
-      "contact.heading": "Contact",
-      "contact.phone": "Telefon",
-      "contact.coverage": "Acoperire",
-      "contact.text": "Germania, Suedia, Țările de Jos, Franța și în toată Europa.",
-      "footer.rights": "Toate drepturile rezervate."
+      "brand":"Mihaila Smart Solutions",
+      "nav.services":"Servicii","nav.work":"Proiecte","nav.about":"Despre","nav.contact":"Contact","nav.contact.btn":"Contact",
+      "hero.title":"Din ambiție în realitate — construit cu viziune, precizie și determinare.",
+      "hero.lead":"Suport pentru construcții în Europa & EMEA.",
+      "hero.cta.quote":"Cere ofertă","hero.cta.services":"Serviciile noastre",
+      "services.title":"Servicii",
+      "svc.1.title":"Suport logistic pe șantier","svc.1.body":"Coordonare end-to-end pentru materiale, acces și fluxuri.",
+      "svc.2.title":"Organizare șantier","svc.2.body":"Welfare & birouri, reguli de șantier, instruiri.",
+      "svc.3.title":"Forță de muncă & operatori","svc.3.body":"Stivuitor, moffits, operatori utilaje după necesar.",
+      "svc.4.title":"Management deșeuri","svc.4.body":"Separare, colectare, conformare și raportare.",
+      "svc.5.title":"Echipamente de acces & ridicare","svc.5.body":"Aprovizionare și coordonare pentru echipamente de acces & ridicare.",
+      "about.title":"Despre",
+      "about.body":"Am pornit de jos — cu speranță, muncă și ambiție. Azi livrăm execuție fiabilă, comunicare clară și rezultate măsurabile pentru fiecare șantier pe care îl sprijinim.",
+      "contact.title":"Contact","contact.email":"Email","contact.phone":"Telefon / WhatsApp","contact.linkedin":"LinkedIn",
+      "contact.cta.email":"Trimite-ne email","contact.cta.whatsapp":"Mesaj pe WhatsApp",
+      "contact.coverage":"Acoperire","contact.coverage.text":"Germania, Suedia, Țările de Jos, Franța și în toată Europa.",
+      "work.type":"Centru de date"
     },
     "de": {
-      "brand": "Mihaila Smart Solutions",
-      "hero.title": "Intelligente, zuverlässige Rechenzentrumslösungen in ganz Europa.",
-      "hero.lead": "Wir planen, installieren und überwachen Brand- und Sicherheitssysteme mit Präzision und Tempo.",
-      "cta.whatsapp": "Schreib uns auf WhatsApp",
-      "cta.email": "Schick uns eine E-Mail",
-      "cta.linkedin": "LinkedIn",
-      "about.heading": "Über uns",
-      "about.body": "Wir haben von ganz unten angefangen – mit Ehrgeiz, Disziplin und harter Arbeit. Heute liefern wir europäische Qualität und On-Site-Supervision für jedes Projekt.",
-      "work.heading": "Unsere Projekte",
-      "work.type": "Rechenzentrum",
-      "contact.heading": "Kontakt",
-      "contact.phone": "Telefon",
-      "contact.coverage": "Abdeckung",
-      "contact.text": "Deutschland, Schweden, die Niederlande, Frankreich und ganz Europa.",
-      "footer.rights": "Alle Rechte vorbehalten."
+      "brand":"Mihaila Smart Solutions",
+      "nav.services":"Services","nav.work":"Unsere Arbeit","nav.about":"Über uns","nav.contact":"Kontakt","nav.contact.btn":"Kontakt",
+      "hero.title":"Von der Ambition zur Realität — mit Vision, Präzision und Entschlossenheit gebaut.",
+      "hero.lead":"Construction-Support in Europa & EMEA.",
+      "hero.cta.quote":"Angebot anfragen","hero.cta.services":"Unsere Services",
+      "services.title":"Services",
+      "svc.1.title":"Logistik-Support vor Ort","svc.1.body":"End-to-End-Koordination für Materialien, Zugänge und Flüsse.",
+      "svc.2.title":"Baustelleneinrichtung","svc.2.body":"Welfare & Büro-Setup, Platzregeln, Einweisungen.",
+      "svc.3.title":"Personal & Bediener","svc.3.body":"Gabelstapler, Moffits, Maschinenführer nach Bedarf.",
+      "svc.4.title":"Abfallmanagement","svc.4.body":"Trennung, Sammlung, Compliance und Reporting.",
+      "svc.5.title":"Hebe- & Zugangstechnik","svc.5.body":"Beschaffung und Koordination von Zugangs- & Hebe-Equipment.",
+      "about.title":"Über uns",
+      "about.body":"Wir haben von unten begonnen — mit Hoffnung, harter Arbeit und Ehrgeiz. Heute liefern wir verlässliche Ausführung, klare Kommunikation und messbare Ergebnisse für jede Baustelle, die wir unterstützen.",
+      "contact.title":"Kontakt","contact.email":"E-Mail","contact.phone":"Telefon / WhatsApp","contact.linkedin":"LinkedIn",
+      "contact.cta.email":"E-Mail senden","contact.cta.whatsapp":"WhatsApp-Nachricht",
+      "contact.coverage":"Abdeckung","contact.coverage.text":"Deutschland, Schweden, Niederlande, Frankreich & ganz Europa.",
+      "work.type":"Rechenzentrum"
     }
   }
   </script>
 
+  <!-- i18n engine -->
   <script>
-    // i18n core
     const I18N = (() => {
-      const storeKey = 'mss.lang';
+      const storeKey='mss.lang';
       const data = JSON.parse(document.getElementById('i18n-json').textContent);
       const supported = Object.keys(data);
-      function detect() {
-        const urlLang = new URLSearchParams(location.search).get('lang');
-        if (urlLang && supported.includes(urlLang)) return urlLang;
-        const saved = localStorage.getItem(storeKey);
-        if (saved && supported.includes(saved)) return saved;
-        return 'en';
-      }
-      function apply(lang) {
-        const dict = data[lang] || data.en;
-        document.documentElement.lang = lang;
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-          const key = el.getAttribute('data-i18n');
-          if (dict[key]) el.textContent = dict[key];
-        });
-        document.querySelectorAll('[data-lang]').forEach(btn => {
-          btn.setAttribute('aria-pressed', String(btn.dataset.lang === lang));
-        });
+      function detect(){ const q=new URLSearchParams(location.search).get('lang'); if(q&&supported.includes(q)) return q; const s=localStorage.getItem(storeKey); if(s&&supported.includes(s)) return s; return 'en'; }
+      function apply(lang){
+        const dict=data[lang]||data.en;
+        document.documentElement.lang=lang;
+        document.querySelectorAll('[data-i18n]').forEach(el=>{ const k=el.getAttribute('data-i18n'); if(dict[k]) el.textContent=dict[k]; });
+        document.querySelectorAll('[data-lang]').forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.lang===lang)));
         localStorage.setItem(storeKey, lang);
-        const url = new URL(location);
-        url.searchParams.set('lang', lang);
-        history.replaceState({}, '', url);
+        const url=new URL(location); url.searchParams.set('lang', lang); history.replaceState({},'',url);
       }
-      return { detect, apply };
+      function init(){ const lang=detect(); apply(lang); document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>apply(b.dataset.lang))); const y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear(); }
+      return { init };
     })();
-
-    // init
-    const initLang = I18N.detect();
-    I18N.apply(initLang);
-
-    // listeners
-    document.querySelectorAll('[data-lang]').forEach(btn => {
-      btn.addEventListener('click', () => I18N.apply(btn.dataset.lang));
-    });
-
-    // footer year
-    document.getElementById('year').textContent = new Date().getFullYear();
+    window.addEventListener('DOMContentLoaded', ()=>I18N.init());
   </script>
-
-  <!-- Optional SEO hreflang -->
-  <link rel="alternate" href="https://mihailasmartsolutions.co/?lang=en" hreflang="en" />
-  <link rel="alternate" href="https://mihailasmartsolutions.co/?lang=ro" hreflang="ro" />
-  <link rel="alternate" href="https://mihailasmartsolutions.co/?lang=de" hreflang="de" />
 </body>
 </html>
 
