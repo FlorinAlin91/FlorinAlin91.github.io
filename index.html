@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Home • Mihaila Smart Solutions{% endblock %}
+
+{% block content %}
+  <section class="hero section">
+    <h1>Mihaila Smart Solutions</h1>
+    <p>From ambition to reality – built with vision, precision and determination.</p>
+    <div class="actions">
+      <a class="btn btn-lg" href="/contact/">Get a quote</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Construction Support across Europe & EMEA</h2>
+    <div class="grid cols-3">
+      <div class="card"><h3>Logistics support on site</h3><p>End-to-end coordination for materials, access and flows.</p></div>
+      <div class="card"><h3>Site set-up</h3><p>Welfare & office set-up, site rules, inductions.</p></div>
+      <div class="card"><h3>Provision of labour & operators</h3><p>Forklift, moffits, plant operators as required.</p></div>
+      <div class="card"><h3>Waste management</h3><p>Segregation, collection, compliance and reporting.</p></div>
+      <div class="card"><h3>Plant & access equipment</h3><p>Procuring and coordinating access & lifting equipment.</p></div>
+      <div class="card"><h3>Import / Export & customs</h3><p>Deliveries scheduling, customs logistics and docs.</p></div>
+      <div class="card"><h3>Local collaboration</h3><p>Suppliers & wholesalers network across EU & EMEA.</p></div>
+    </div>
+  </section>
+
+  <!-- Galerie (poți lăsa așa sau o scoți dacă nu vrei) -->
+  <section class="section">
+    <h2>Our Work</h2>
+    <div class="grid cols-3">
+      <div class="card"><img src="{% static 'gallery/site1.jpg' %}" alt="Project 1" style="width:100%;border-radius:10px;"></div>
+      <div class="card"><img src="{% static 'gallery/site2.jpg' %}" alt="Project 2" style="width:100%;border-radius:10px;"></div>
+      <div class="card"><img src="{% static 'gallery/site3.jpg' %}" alt="Project 3" style="width:100%;border-radius:10px;"></div>
+    </div>
+    <p style="opacity:.85;margin-top:12px;">(Add/replace photos in <code>website/static/gallery/</code>)</p>
+  </section>
+
+  <section class="section">
+    <h2>Additional Value for Norway, Germany & Europe</h2>
+    <ul>
+      <li>Guidance on company establishment (including NUF in Norway) & EU frameworks.</li>
+      <li>Documentation to legally employ workers in each country.</li>
+      <li>Compliance with local regulations (HMS cards, D-numbers, tax, TÜV, etc.).</li>
+      <li>Liaising with subcontractors, suppliers and partner firms across Europe.</li>
+    </ul>
+    <p><strong>Languages:</strong> German • English • Spanish • Italian</p>
+  </section>
+{% endblock %}
