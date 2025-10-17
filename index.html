@@ -4,6 +4,7 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Mihaila Smart Solutions</title>
+  <link rel="stylesheet" href="assets/css/hero-flames.css">
   <style>
     :root { --bg:#0b0b0e; --fg:#f7f7f7; --gold:#c9a227; --muted:#9aa0a6; --card:#0f1016; }
     * { box-sizing:border-box; }
@@ -46,6 +47,16 @@
   </style>
 </head>
 <body>
+ <section class="hero">
+  <canvas id="flames-bg"></canvas>
+
+  <div class="overlay-content">
+    <img src="logo.png" alt="Mihaila Smart Solutions" class="hero-logo">
+    <h1>From ambition to reality</h1>
+    <p>Built with vision, precision and determination.</p>
+    <a href="contact.html" class="hero-btn">Get a quote</a>
+  </div>
+</section>
   <header>
     <div class="wrap">
       <a class="brand" href="index.html">
@@ -255,6 +266,7 @@
     })();
     window.addEventListener('DOMContentLoaded', ()=>I18N.init());
   </script>
+  <script defer src="assets/js/flames-bg.js"></script>
 </body>
 </html>
 
