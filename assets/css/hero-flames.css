@@ -1,7 +1,7 @@
 /* secțiunea hero: are înălțime clară și NU blochează restul */
 .ms-hero{
   position:relative;
-  height:clamp(130px, 78vh, 15px);
+  height:clamp(250px, 78vh, 60px);
   background:#0a0b0d;
   overflow:hidden;
   margin:0 auto 60px auto;
