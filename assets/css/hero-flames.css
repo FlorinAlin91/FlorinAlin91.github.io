@@ -1,38 +1,70 @@
+/* ===== HERO „premium” ===== */
+.ms-hero {
+  position: relative;
+  height: clamp(560px, 76vh, 900px);
+  background:
+    radial-gradient(1200px 600px at 20% 85%, #181120 0%, transparent 55%),
+    radial-gradient(1200px 600px at 80% 85%, #0a111b 0%, transparent 55%),
+    #0b0b0e;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 64px;
+  isolation: isolate;
+}
+
+/* canvas sub overlay */
+.ms-hero #flames-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: .65; /* mai vizibile */
+  filter: blur(14px) brightness(125%) contrast(130%);
+  pointer-events: none;
+}
+
+/* overlay „premium” */
+.hero-overlay {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+}
+
+/* LOGO mai mare pe desktop, se micșorează pe mobil */
 .hero-logo {
-  width: 190px;
+  width: 160px;
   height: auto;
-  filter:
-    drop-shadow(0 0 10px rgba(255,191,43,0.45))
-    drop-shadow(0 0 25px rgba(255,191,43,0.25));
-  transition: transform 0.4s ease, filter 0.4s ease;
-  animation: logo-glow 3.5s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 18px rgba(255,191,43,.45));
 }
 
-/* efect pe hover (desktop) */
-.hero-logo:hover {
-  transform: scale(1.05);
-  filter:
-    drop-shadow(0 0 20px rgba(255,191,43,0.6))
-    drop-shadow(0 0 35px rgba(255,191,43,0.4));
-}
-
-/* animația pulsantă ușoară de glow */
-@keyframes logo-glow {
-  from {
-    filter:
-      drop-shadow(0 0 10px rgba(255,191,43,0.35))
-      drop-shadow(0 0 20px rgba(255,191,43,0.15));
-  }
-  to {
-    filter:
-      drop-shadow(0 0 25px rgba(255,191,43,0.65))
-      drop-shadow(0 0 40px rgba(255,191,43,0.35));
-  }
-}
-
-/* pe telefoane, puțin mai mic */
-@media (max-width:700px){
+@media (max-width: 700px) {
   .hero-logo {
-    width: 150px;
+    width: 120px;
   }
+}
+
+/* Titlu – mai solid */
+.hero-overlay h1 {
+  margin: 4px 0;
+  font-size: clamp(36px, 5.6vw, 62px);
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: #fff;
+  text-shadow: 0 26px rgba(255,191,43,.35),
+               0 1px rgba(0,0,0,.35);
+}
+
+/* Subtitlu */
+.hero-overlay p {
+  margin: 0 18px;
+  font-size: clamp(14px, 2vw, 19px);
+  color: #bdbdb2;
 }
