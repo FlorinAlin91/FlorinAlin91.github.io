@@ -1,27 +1,70 @@
-/* secțiunea hero: are înălțime clară și NU blochează restul */
-.ms-hero{
-  position:relative;
-  height:clamp(250px, 78vh, 60px);
-  background:#0a0b0d;
-  overflow:hidden;
-  margin:0 auto 60px auto;
+/* ===== HERO CU FLĂCĂRI ===== */
+.ms-hero {
+  position: relative;
+  height: clamp(550px, 75vh, 900px);
+  background: #0b0b0e;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 60px;
 }
 
-/* canvasul sub conținut, fără blend-uri exotice */
-.ms-hero #flames-bg{
-  position:absolute; inset:0;
-  width:100%; height:100%;
-  z-index:0;          /* sub overlay */
-  opacity:1;
-  pointer-events:none;
-  filter:contrast(130%) brightness(110%);
+/* Canvas flăcări */
+.ms-hero canvas#flames-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  filter: contrast(150%) brightness(120%);
+  pointer-events: none;
 }
 
-/* overlay-ul (logo, titlu, buton) CENTRAT, peste canvas */
-.ms-hero .overlay-content{
-  position:relative; z-index:2;
-  max-width:980px; margin:0 auto; padding:0 20px;
-  min-height:100%;
-  display:flex; align-items:center; justify-content:center; flex-direction:column;
-  text-align:center;
+/* Conținut peste flăcări */
+.hero-overlay {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.hero-logo {
+  width: 140px;
+  height: auto;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 10px rgba(255,191,43,0.6));
+}
+
+.hero-title {
+  font-size: clamp(32px, 5vw, 58px);
+  font-weight: 800;
+  color: #fff;
+  margin: 0;
+  text-shadow: 0 0 25px rgba(255,191,43,0.4);
+}
+
+.hero-subtitle {
+  color: #ddd;
+  margin: 10px 0 25px;
+  font-size: clamp(16px, 2vw, 18px);
+}
+
+.hero-btn {
+  background: linear-gradient(90deg, #ffbf2b, #ff9f00);
+  color: #111;
+  font-weight: 700;
+  padding: 12px 24px;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 15px rgba(255,191,43,0.4);
+}
+.hero-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px rgba(255,191,43,0.6);
 }
