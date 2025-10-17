@@ -1,7 +1,7 @@
-// ===== FLĂCĂRI MIHAILA SMART SOLUTIONS =====
+// ===== FLĂCĂRI AURII MIHAILA SMART SOLUTIONS =====
 const canvas = document.getElementById('flames-bg');
 if (canvas) {
-  const ctx = canvas.getContext('2d', { alpha: true });
+  const ctx = canvas.getContext('2d');
   let particles = [];
 
   function resize() {
@@ -11,47 +11,36 @@ if (canvas) {
   resize();
   window.addEventListener('resize', resize);
 
-  class Flame {
-    constructor(x, y, size, speed) {
-      this.x = x;
-      this.y = y;
-      this.size = size;
-      this.speed = speed;
-      this.alpha = 1;
-      this.color = rgba(255, ${150 + Math.random() * 80}, 43, ${this.alpha});
+  class Light {
+    constructor() {
+      this.x = Math.random() * canvas.width;
+      this.y = canvas.height - Math.random() * 100;
+      this.size = Math.random() * 120 + 60;
+      this.alpha = Math.random() * 0.3 + 0.1;
+      this.speed = Math.random() * 0.3 + 0.1;
     }
     update() {
       this.y -= this.speed;
-      this.size *= 0.98;
-      this.alpha -= 0.015;
+      if (this.y < -100) this.y = canvas.height + 50;
     }
     draw() {
+      const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
+      grad.addColorStop(0, rgba(255,191,43,${this.alpha}));
+      grad.addColorStop(1, 'transparent');
+      ctx.fillStyle = grad;
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fillStyle = this.color;
-      ctx.globalAlpha = this.alpha;
       ctx.fill();
-      ctx.globalAlpha = 1;
     }
   }
 
-  function spawnFlames() {
-    const x = Math.random() * canvas.width;
-    const y = canvas.height - 20;
-    const size = Math.random() * 10 + 6;
-    const speed = Math.random() * 1.5 + 0.5;
-    particles.push(new Flame(x, y, size, speed));
-  }
+  for (let i = 0; i < 25; i++) particles.push(new Light());
 
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    spawnFlames();
-    particles.forEach((f, i) => {
-      f.update();
-      f.draw();
-      if (f.alpha <= 0 || f.size < 0.5) particles.splice(i, 1);
-    });
+    particles.forEach(f => { f.update(); f.draw(); });
     requestAnimationFrame(animate);
   }
+
   animate();
 }
