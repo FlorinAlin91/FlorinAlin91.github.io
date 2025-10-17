@@ -58,3 +58,42 @@
   transition:transform .18s ease, box-shadow .25s ease, filter .25s ease;
 }
 .hero-btn:hover{ transform:translateY(-2px); box-shadow:0 0 30px rgba(255,191,43,.6); filter:saturate(110%); }
+
+.hero-logo {
+  width: 190px;
+  height: auto;
+  filter:
+    drop-shadow(0 0 10px rgba(255,191,43,0.45))
+    drop-shadow(0 0 25px rgba(255,191,43,0.25));
+  transition: transform 0.4s ease, filter 0.4s ease;
+  animation: logo-glow 3.5s ease-in-out infinite alternate;
+}
+
+/* efect pe hover (desktop) */
+.hero-logo:hover {
+  transform: scale(1.05);
+  filter:
+    drop-shadow(0 0 20px rgba(255,191,43,0.6))
+    drop-shadow(0 0 35px rgba(255,191,43,0.4));
+}
+
+/* animația pulsantă ușoară de glow */
+@keyframes logo-glow {
+  from {
+    filter:
+      drop-shadow(0 0 10px rgba(255,191,43,0.35))
+      drop-shadow(0 0 20px rgba(255,191,43,0.15));
+  }
+  to {
+    filter:
+      drop-shadow(0 0 25px rgba(255,191,43,0.65))
+      drop-shadow(0 0 40px rgba(255,191,43,0.35));
+  }
+}
+
+/* pe telefoane, puțin mai mic */
+@media (max-width:700px){
+  .hero-logo {
+    width: 150px;
+  }
+}
