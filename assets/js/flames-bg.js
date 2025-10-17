@@ -12,10 +12,10 @@
   const BLUE = [60, 140, 255];
 
   function resize() {
+    // folosim dimensiunile reale ale secțiunii .ms-hero
     const rect = container.getBoundingClientRect();
     W = Math.max(1, rect.width);
-    // dacă nu are înălțime setată, folosim 82% din viewport
-    H = container.offsetHeight || rect.height || Math.round(window.innerHeight * 0.82);
+    H = Math.max(1, container.offsetHeight || rect.height || Math.round(window.innerHeight * 0.78));
     canvas.width = W * DPR;
     canvas.height = H * DPR;
     ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
@@ -41,6 +41,7 @@
     t += 0.016;
     ctx.clearRect(0,0,W,H);
 
+    // gradient subtil (negru -> albastru închis)
     const g = ctx.createLinearGradient(0,H,0,0);
     g.addColorStop(0,'#050506'); g.addColorStop(1,'#0a0f1a');
     ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
