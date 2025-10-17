@@ -1,70 +1,67 @@
-/* ===== HERO „premium” ===== */
-.ms-hero {
+/* ===== Hero Section ===== */
+.hero-section {
   position: relative;
-  height: clamp(560px, 76vh, 900px);
-  background:
-    radial-gradient(1200px 600px at 20% 85%, #181120 0%, transparent 55%),
-    radial-gradient(1200px 600px at 80% 85%, #0a111b 0%, transparent 55%),
-    #0b0b0e;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 64px;
-  isolation: isolate;
-}
-
-/* canvas sub overlay */
-.ms-hero #flames-bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  opacity: .65; /* mai vizibile */
-  filter: blur(14px) brightness(125%) contrast(130%);
-  pointer-events: none;
-}
-
-/* overlay „premium” */
-.hero-overlay {
-  position: relative;
-  z-index: 2;
-  text-align: center;
+  height: 100vh;
+  background: url("/static/images/flames-bg.jpg") center center / cover no-repeat;
+  filter: none; /* scoate blurul */
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 16px;
-  padding: 20px;
+  text-align: center;
+  color: #ffbf2b; /* premium gold text */
 }
 
-/* LOGO mai mare pe desktop, se micșorează pe mobil */
+/* Logo */
 .hero-logo {
-  width: 160px;
+  width: 190px;
   height: auto;
-  filter: drop-shadow(0 0 18px rgba(255,191,43,.45));
+  filter: drop-shadow(0 0 20px rgba(255,191,43,0.45));
+  transition: transform 0.4s ease, filter 0.4s ease;
+  animation: logo-glow 3s ease-in-out infinite alternate;
 }
 
-@media (max-width: 700px) {
-  .hero-logo {
-    width: 120px;
+@keyframes logo-glow {
+  from {
+    filter: drop-shadow(0 0 10px rgba(255,191,43,0.25));
+  }
+  to {
+    filter: drop-shadow(0 0 25px rgba(255,191,43,0.6));
   }
 }
 
-/* Titlu – mai solid */
-.hero-overlay h1 {
-  margin: 4px 0;
-  font-size: clamp(36px, 5.6vw, 62px);
-  font-weight: 900;
-  letter-spacing: 3px;
-  color: #fff;
-  text-shadow: 0 26px rgba(255,191,43,.35),
-               0 1px rgba(0,0,0,.35);
+/* Title */
+.hero-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-top: 1rem;
+  margin-bottom: 0.8rem;
+  color: #ffbf2b;
+  text-shadow: 0 0 18px rgba(255,191,43,0.25);
 }
 
-/* Subtitlu */
-.hero-overlay p {
-  margin: 0 18px;
-  font-size: clamp(14px, 2vw, 19px);
-  color: #bdbdb2;
+/* Subtitle */
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: white;
+  margin-bottom: 2rem;
+}
+
+/* Get a Quote Button */
+.hero-button {
+  background-color: #ffbf2b;
+  color: #000;
+  border: none;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(255,191,43,0.4);
+}
+
+.hero-button:hover {
+  background-color: #dcae1d;
+  box-shadow: 0 0 25px rgba(255,191,43,0.7);
+  transform: scale(1.05);
 }
