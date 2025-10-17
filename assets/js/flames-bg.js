@@ -81,3 +81,93 @@
   }
   frame();
 })();
+/* ===== ALT HERO (fără flăcări) ===== */
+.alt-hero{
+  position: relative;
+  height: clamp(520px, 72vh, 860px);
+  margin: 0 auto 56px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* fundal discret cu gradient mișcat */
+.alt-hero__bg{
+  position:absolute; inset:0;
+  background:
+    radial-gradient(1200px 600px at 20% 80%, rgba(255,191,43,.15), transparent 60%),
+    radial-gradient(1200px 600px at 80% 80%, rgba(80,140,255,.12), transparent 60%),
+    #0b0b0e;
+  animation: heroGlow 10s linear infinite;
+  z-index: 0;
+}
+
+@keyframes heroGlow{
+  0%   { filter: hue-rotate(0deg) brightness(1); }
+  50%  { filter: hue-rotate(10deg) brightness(1.05); }
+  100% { filter: hue-rotate(0deg) brightness(1); }
+}
+
+.alt-hero__content{
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.alt-hero__logo{
+  width: 120px;              /* mai mic decât înainte */
+  height: auto;
+  margin-bottom: 16px;
+  filter: drop-shadow(0 0 10px rgba(255,191,43,.35));
+}
+
+.alt-hero__title{
+  font-size: clamp(30px, 5vw, 56px);
+  line-height: 1.05;
+  margin: 10px 0 8px;
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 0 16px rgba(255,191,43,.35);
+}
+
+.alt-hero__lead{
+  color: #cfd2d8;
+  margin: 0 0 22px;
+  font-size: clamp(15px, 2vw, 18px);
+}
+
+.alt-hero__cta{
+  display: inline-flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* butoane */
+.btn{
+  display:inline-block;
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.btn--primary{
+  background: linear-gradient(90deg, #ffbf2b, #ff9f00);
+  color: #121212;
+  box-shadow: 0 0 18px rgba(255,191,43,.35);
+}
+.btn--primary:hover{ transform: translateY(-1px); box-shadow:0 0 26px rgba(255,191,43,.55); }
+
+.btn--ghost{
+  border: 1px solid rgba(255,191,43,.45);
+  color: #eee;
+  background: transparent;
+}
+.btn--ghost:hover{ background: rgba(255,191,43,.08); }
