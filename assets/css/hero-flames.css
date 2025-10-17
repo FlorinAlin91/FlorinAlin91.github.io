@@ -68,3 +68,22 @@
   font-size: clamp(14px, 2vw, 19px);
   color: #bdbdb2;
 }
+/* === Fix pentru hero și butonul Get a quote === */
+.ms-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.ms-hero canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none; /* flăcările nu mai blochează clickurile */
+}
+
+.ms-hero .hero-overlay {
+  position: relative;
+  z-index: 1;
+}
