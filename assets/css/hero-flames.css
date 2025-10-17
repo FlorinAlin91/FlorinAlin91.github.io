@@ -1,95 +1,29 @@
-body {
-  margin: 0;
-  background: #0b0b0c;
-  font-family: system-ui, Segoe UI, Roboto, Arial;
-  color: #fff;
+/* --- doar pentru secțiunea cu flăcări --- */
+.ms-hero{
+  position:relative;
+  min-height:82vh;          /* înălțime mare dar nu acoperă pagina */
+  background:#0b0b0c;
+  overflow:hidden;          /* nimic nu iese în afara secțiunii */
+  display:grid;             /* centrează conținutul */
+  place-items:center;
+  margin-bottom:60px;
 }
-
-/* ====== BACKGROUND FLAMES ====== */
-.ms-hero {
-  position: relative;
-  min-height: 92vh;
-  background: #0b0b0c;
-  overflow: hidden;
+.ms-hero canvas#flames-bg{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  z-index:0;
+  filter:blur(.5px) contrast(105%) brightness(80%);
+  opacity:.9;
 }
-
-.ms-hero canvas#flames-bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  filter: blur(0.5px) contrast(105%) brightness(80%);
-  opacity: 0.9;
+.ms-hero:after{
+  content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size:3px 3px; mix-blend-mode:soft-light; opacity:.35;
 }
-
-.ms-hero:after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background-image: radial-gradient(rgba(255,255,255,.04) 1px, transparent 1px);
-  background-size: 3px 3px;
-  mix-blend-mode: soft-light;
-  opacity: .35;
-}
-
-.ms-hero .overlay-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  top: 40%;
-  transform: translateY(-20%);
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-/* ====== CONTENT STYLING ====== */
-.hero-logo {
-  width: 180px;
-  margin-bottom: 20px;
-  filter: drop-shadow(0 0 10px rgba(255, 191, 43, 0.5));
-}
-
-.ms-hero h1 {
-  font-size: clamp(32px, 5vw, 56px);
-  font-weight: 700;
-  color: #fff;
-  margin: 10px 0;
-  text-shadow: 0 0 18px rgba(255, 191, 43, 0.5);
-}
-
-.ms-hero p {
-  font-size: 1.2rem;
-  color: #dcdcdc;
-  margin-bottom: 30px;
-}
-
-.hero-btn {
-  background: linear-gradient(90deg, #ffbf2b 0%, #ffaa00 100%);
-  color: #111;
-  padding: 14px 30px;
-  border-radius: 30px;
-  font-weight: 700;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 20px rgba(255, 191, 43, 0.3);
-}
-
-.hero-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 30px rgba(255, 191, 43, 0.6);
-}
-
-/* ====== GENERAL ====== */
-.ms-hero {
-  margin-bottom: 60px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  canvas#flames-bg {
-    display: none;
-  }
-}
+.ms-hero .overlay-content{position:relative; z-index:2; text-align:center; padding:0 20px; max-width:900px;}
+.hero-logo{width:180px; margin-bottom:20px; filter:drop-shadow(0 0 10px rgba(255,191,43,.5));}
+.ms-hero h1{font-size:clamp(32px,5vw,56px); margin:10px 0; font-weight:700; color:#fff; text-shadow:0 0 18px rgba(255,191,43,.5);}
+.ms-hero p{font-size:1.2rem; color:#dcdcdc; margin-bottom:30px;}
+.hero-btn{background:linear-gradient(90deg,#ffbf2b,#ffaa00); color:#111; padding:14px 30px; border-radius:30px; font-weight:700; text-decoration:none; transition:.3s; box-shadow:0 0 20px rgba(255,191,43,.3);}
+.hero-btn:hover{transform:scale(1.05); box-shadow:0 0 30px rgba(255,191,43,.6);}
+@media (prefers-reduced-motion:reduce){canvas#flames-bg{display:none}}
