@@ -4,6 +4,7 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Mihaila Smart Solutions</title>
+  <!-- Efect flăcări -->
   <link rel="stylesheet" href="assets/css/hero-flames.css">
   <style>
     :root { --bg:#0b0b0e; --fg:#f7f7f7; --gold:#c9a227; --muted:#9aa0a6; --card:#0f1016; }
@@ -47,17 +48,8 @@
   </style>
 </head>
 <body>
+  <!-- HEADER (doar meniul) -->
   <header>
-     <section class="ms-hero">
-  <canvas id="flames-bg"></canvas>
-
-  <div class="overlay-content">
-    <img src="logo.png" alt="Mihaila Smart Solutions" class="hero-logo">
-    <h1>From ambition to reality</h1>
-    <p>Built with vision, precision and determination.</p>
-    <a href="contact.html" class="hero-btn">Get a quote</a>
-  </div>
-</section>
     <div class="wrap">
       <a class="brand" href="index.html">
         <img src="logo.png" alt="MSS logo"/>
@@ -78,8 +70,19 @@
     </div>
   </header>
 
+  <!-- HERO CU FLĂCĂRI (în afara headerului) -->
+  <section class="ms-hero">
+    <canvas id="flames-bg"></canvas>
+    <div class="overlay-content">
+      <img src="logo.png" alt="Mihaila Smart Solutions" class="hero-logo">
+      <h1>From ambition to reality</h1>
+      <p>Built with vision, precision and determination.</p>
+      <a href="contact.html" class="hero-btn">Get a quote</a>
+    </div>
+  </section>
+
   <main>
-    <!-- SERVICES on home (exact ca în poze) -->
+    <!-- SERVICES -->
     <section class="section" id="services">
       <h2 data-i18n="services.title">Services</h2>
 
@@ -109,15 +112,15 @@
       </div>
     </section>
 
-        <div class="card">
-  <h3 style="margin:0 6px" data-i18n="svc.6.title">Regulatory support (NUF & TÜV)</h3>
-  <p style="margin:0;color:var(--muted)" data-i18n="svc.6.body">
-    Guidance and assistance for companies requiring NUF registration in Norway 
-    or TÜV certification processes in Germany. We support with the right contacts 
-    and procedures to ensure smooth compliance — we don’t execute the certifications 
-    ourselves, but we connect you with the proper authorities and partners.
-  </p>
-</div>
+    <div class="card">
+      <h3 style="margin:0 6px" data-i18n="svc.6.title">Regulatory support (NUF & TÜV)</h3>
+      <p style="margin:0;color:var(--muted)" data-i18n="svc.6.body">
+        Guidance and assistance for companies requiring NUF registration in Norway 
+        or TÜV certification processes in Germany. We support with the right contacts 
+        and procedures to ensure smooth compliance — we don’t execute the certifications 
+        ourselves, but we connect you with the proper authorities and partners.
+      </p>
+    </div>
 
     <!-- ABOUT -->
     <section class="section" id="about">
@@ -144,7 +147,7 @@
       </div>
     </section>
 
-    <!-- OUR WORK (9 proiecte, poze din root) -->
+    <!-- OUR WORK -->
     <section class="section" id="work">
       <h2 data-i18n="nav.work">Our Work</h2>
       <div class="grid">
@@ -251,6 +254,8 @@
     })();
     window.addEventListener('DOMContentLoaded', ()=>I18N.init());
   </script>
+
+  <!-- Scriptul flăcărilor -->
   <script defer src="assets/js/flames-bg.js"></script>
 </body>
 </html>
