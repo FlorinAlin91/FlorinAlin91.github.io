@@ -170,3 +170,26 @@ html {
     drop-shadow(0 0 20px rgba(255,191,43,.5))
     drop-shadow(0 0 40px rgba(255,191,43,.3));
 }
+/* === HERO TITLE CLEAN === */
+.hero-title {
+  font-size: clamp(42px, 6vw, 90px);
+  font-weight: 800;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 0.3px;
+  margin: 0 auto 10px;
+  text-shadow:
+    0 0 15px rgba(255,191,43,0.3),
+    0 0 35px rgba(255,191,43,0.15);
+}
+
+/* elimină eventuale efecte de dublare */
+.hero-title::before,
+.hero-title::after {
+  content: none !important;
+}
+
+/* oprește stroke-ul alb care creează efectul dublu */
+.hero-title {
+  -webkit-text-stroke: 0 !important;
+}
