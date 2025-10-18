@@ -56,3 +56,91 @@ h3{margin:6px 0 6px}
 html {
   scroll-behavior: smooth;
 }
+/* === GET A QUOTE SECTION === */
+#quote {
+  background-color: #0a0a0a;
+  color: #fff;
+  padding: 60px 20px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 191, 43, 0.2);
+  border-bottom: 1px solid rgba(255, 191, 43, 0.2);
+}
+
+#quote h2 {
+  font-size: 2rem;
+  color: #ffbf2b;
+  margin-bottom: 10px;
+}
+
+#quote p {
+  color: #ccc;
+  margin-bottom: 25px;
+  font-size: 1rem;
+}
+
+.contact-box {
+  background: rgba(255, 191, 43, 0.05);
+  border: 1px solid rgba(255, 191, 43, 0.25);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 0 auto 30px;
+  max-width: 400px;
+  box-shadow: 0 0 20px rgba(255, 191, 43, 0.1);
+}
+
+.contact-box a {
+  color: #ffbf2b;
+  text-decoration: none;
+}
+
+.contact-box a:hover {
+  text-decoration: underline;
+}
+
+.quote-form {
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.quote-form label {
+  text-align: left;
+  font-size: 0.9rem;
+  color: #ffbf2b;
+}
+
+.quote-form input,
+.quote-form textarea {
+  background: #111;
+  color: #fff;
+  border: 1px solid rgba(255, 191, 43, 0.3);
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 0.95rem;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.quote-form input:focus,
+.quote-form textarea:focus {
+  outline: none;
+  border: 1px solid #ffbf2b;
+  box-shadow: 0 0 8px rgba(255, 191, 43, 0.4);
+}
+
+.quote-form button {
+  background-color: #ffbf2b;
+  color: #000;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.quote-form button:hover {
+  background-color: #ffcf5b;
+  transform: translateY(-2px);
+}
