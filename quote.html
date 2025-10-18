@@ -1,184 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Get a Quote - Mihaila Smart Solutions</title>
-
-  <!-- Stiluri principale -->
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="assets/css/hero-flames.css">
-
-  <style>
-    body {
-      background: radial-gradient(ellipse at top, #1a1a1a 0%, #000 100%);
-      color: #fff;
-      font-family: "Inter", sans-serif;
-      overflow-x: hidden;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      padding: 30px 40px;
-      text-align: left;
-    }
-
-    header a {
-      color: #ffbf2b;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
-
-    header a:hover {
-      text-decoration: underline;
-    }
-
-    h1 {
-      text-align: center;
-      margin-top: 40px;
-      color: #ffbf2b;
-      font-size: 2.4rem;
-      letter-spacing: 1px;
-      text-shadow: 0 0 10px rgba(255,191,43,0.5), 0 0 20px rgba(255,191,43,0.3);
-    }
-
-    p {
-      text-align: center;
-      color: #bbb;
-      font-size: 1.1rem;
-    }
-
-    form {
-      max-width: 520px;
-      margin: 50px auto;
-      background: rgba(255, 191, 43, 0.04);
-      padding: 40px;
-      border-radius: 14px;
-      border: 1px solid rgba(255, 191, 43, 0.25);
-      box-shadow: 0 0 25px rgba(255,191,43,0.15), inset 0 0 10px rgba(255,191,43,0.05);
-      backdrop-filter: blur(4px);
-      transition: 0.3s ease-in-out;
-    }
-
-    form:hover {
-      box-shadow: 0 0 40px rgba(255,191,43,0.3), inset 0 0 15px rgba(255,191,43,0.1);
-      transform: scale(1.01);
-    }
-
-    label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 600;
-      color: #ffbf2b;
-      font-size: 0.95rem;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 18px;
-      border: 1px solid rgba(255, 191, 43, 0.4);
-      border-radius: 8px;
-      background-color: #0e0e0e;
-      color: #fff;
-      font-size: 1rem;
-      outline: none;
-      box-shadow: inset 0 0 8px rgba(255,191,43,0.05);
-      transition: all 0.3s ease;
-    }
-
-    input:focus, textarea:focus {
-      border-color: #ffbf2b;
-      box-shadow: 0 0 12px rgba(255,191,43,0.4);
-    }
-
-    button {
-      display: block;
-      width: 100%;
-      padding: 14px;
-      border: none;
-      border-radius: 8px;
-      background: linear-gradient(90deg, #ffbf2b, #ff9f00);
-      color: #000;
-      font-weight: 700;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 20px rgba(255,191,43,0.3);
-    }
-
-    button:hover {
-      background: linear-gradient(90deg, #ffcc55, #ffaa22);
-      transform: scale(1.04);
-      box-shadow: 0 0 30px rgba(255,191,43,0.5);
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      font-size: 0.9rem;
-      color: #888;
-    }
-
-    footer span {
-      color: #ffbf2b;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Get a Quote - Mihaila Smart Solutions</title>
+<style>
+  :root{
+    --gold:#ffbf2b; --gold2:#ff9f00; --bg:#0a0a0a; --panel:#111; --muted:#bfbfbf;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#0a0a0a;color:#fff;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
+  header{padding:26px 32px}
+  header a{color:var(--gold);text-decoration:none;font-weight:700}
+  main{max-width:560px;margin:0 auto;padding:0 16px 40px}
+  h1{margin:6px 0 10px;text-align:center;color:var(--gold);font-size:2.1rem;letter-spacing:.4px}
+  p.lead{text-align:center;color:#cfcfcf;margin:0 0 18px}
+  .card{background:rgba(255,191,43,.05);border:1px solid rgba(255,191,43,.28);border-radius:14px;padding:20px 18px;box-shadow:0 0 20px rgba(255,191,43,.12)}
+  label{display:block;margin:10px 2px 6px;color:var(--gold);font-weight:700}
+  input,textarea{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,191,43,.35);background:#111;color:#fff;outline:none}
+  input:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 10px rgba(255,191,43,.35)}
+  .actions{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+  .btn{display:block;text-align:center;padding:14px;border-radius:10px;text-decoration:none;font-weight:800;cursor:pointer}
+  .btn-primary{background:linear-gradient(90deg,var(--gold),var(--gold2));color:#000}
+  .btn-gmail{background:#202124;color:#fff}
+  .btn-outlook{background:#0e63b6;color:#fff}
+  .btn-wa{background:#1f2937;color:#25D366;border:1px solid #25D366}
+  .btn-copy{background:transparent;color:var(--gold);border:1px solid rgba(255,191,43,.5)}
+  .hint{color:#9a9a9a;font-size:.9rem;text-align:center;margin-top:6px}
+  footer{padding:28px 16px;text-align:center;color:#9a9a9a}
+</style>
 </head>
-
 <body>
-  <header>
-    <a href="index.html">← Back to Home</a>
-  </header>
 
-  <main>
-    <h1>Get a Quote</h1>
-    <p>Fill out the form below and we’ll get back to you fast.</p>
+<header><a href="index.html">← Back to Home</a></header>
 
-    <form id="quoteForm" class="quote-form">
+<main>
+  <h1>Get a Quote</h1>
+  <p class="lead">Fill out the form below. Choose how you want to send the message.</p>
+
+  <div class="card">
+    <form id="quoteForm" onsubmit="return false;">
       <label>Your name</label>
-      <input id="q-name" type="text" name="name" placeholder="Your name" required>
+      <input id="q-name" type="text" placeholder="Your name" required />
 
       <label>Email</label>
-      <input id="q-email" type="email" name="email" placeholder="your@email.com" required>
+      <input id="q-email" type="email" placeholder="your@email.com" required />
 
       <label>Message</label>
-      <textarea id="q-message" name="message" placeholder="How can we help?" rows="5" required></textarea>
+      <textarea id="q-message" rows="5" placeholder="How can we help?" required></textarea>
 
-      <button type="submit">Send</button>
+      <div class="actions">
+        <!-- 1) Cel mai sigur: link mailto REAL -->
+        <a id="sendMailto" class="btn btn-primary" href="#" target="_self">Send email</a>
+
+        <!-- 2) Alternative garantate -->
+        <a id="sendGmail"   class="btn btn-gmail"   target="_blank" rel="noopener">Open in Gmail</a>
+        <a id="sendOutlook" class="btn btn-outlook" target="_blank" rel="noopener">Open in Outlook Web</a>
+        <a id="sendWA"      class="btn btn-wa"      target="_blank" rel="noopener">WhatsApp message</a>
+
+        <!-- 3) Rezervă absolută -->
+        <button id="copyMsg" type="button" class="btn btn-copy">Copy message</button>
+        <div class="hint">If your device has no default mail app, use Gmail / Outlook or WhatsApp.</div>
+      </div>
     </form>
-  </main>
+  </div>
+</main>
 
-  <footer>
-    © 2025 <span>Mihaila Smart Solutions</span> — All rights reserved
-  </footer>
+<footer>© 2025 Mihaila Smart Solutions</footer>
 
-  <script>
-  document.getElementById('quoteForm').addEventListener('submit', function (e) {
-    e.preventDefault();
+<script>
+(function(){
+  const TO = 'office@mihailasmartsolutions.co';
+  const WA = '40721521109'; // fără + pentru wa.me
 
-    const name = document.getElementById('q-name').value.trim();
-    const email = document.getElementById('q-email').value.trim();
-    const message = document.getElementById('q-message').value.trim();
+  const nameEl = document.getElementById('q-name');
+  const emailEl = document.getElementById('q-email');
+  const msgEl   = document.getElementById('q-message');
+
+  const aMailto = document.getElementById('sendMailto');
+  const aGmail  = document.getElementById('sendGmail');
+  const aOutl   = document.getElementById('sendOutlook');
+  const aWA     = document.getElementById('sendWA');
+  const btnCopy = document.getElementById('copyMsg');
+
+  const enc = s => encodeURIComponent(s || '');
+
+  function build(){
+    const name    = (nameEl.value  || '').trim();
+    const email   = (emailEl.value || '').trim();
+    const message = (msgEl.value   || '').trim();
 
     const subject = Quote request from ${name || 'website visitor'};
     const body =
-      Name: ${name}\n +
-      Email: ${email}\n\n +
-      Message:\n${message}\n\n +
-      ---------------------------\n +
-      This message was sent from the Mihaila Smart Solutions Quote Form\n +
-      Website: https://mihailasmartsolutions.co\n +
-      Confidential internal communication - do not forward externally.;
+`Name: ${name}
+Email: ${email}
 
-    const mailto = mailto:office@mihailasmartsolutions.co +
-                   ?subject=${encodeURIComponent(subject)} +
-                   &body=${encodeURIComponent(body)};
+Message:
+${message}
 
-    window.location.href = mailto;
+---------------------------
+This message was sent from the Mihaila Smart Solutions Quote Form
+Website: https://mihailasmartsolutions.co`;
+
+    // mailto (app locală)
+    aMailto.href = mailto:${TO}?subject=${enc(subject)}&body=${enc(body)};
+
+    // Gmail & Outlook Web
+    aGmail.href  = https://mail.google.com/mail/?view=cm&fs=1&to=${enc(TO)}&su=${enc(subject)}&body=${enc(body)};
+    aOutl.href   = https://outlook.office.com/mail/deeplink/compose?to=${enc(TO)}&subject=${enc(subject)}&body=${enc(body)};
+
+    // WhatsApp (text compact)
+    const waText =
+`Quote request
+Name: ${name}
+Email: ${email}
+
+${message}`;
+    aWA.href = https://wa.me/${WA}?text=${enc(waText)};
+
+    // Copy button
+    btnCopy.onclick = async () => {
+      try{
+        await navigator.clipboard.writeText(body);
+        btnCopy.textContent = 'Copied ✅';
+        setTimeout(()=>btnCopy.textContent='Copy message', 1800);
+      }catch(e){
+        alert('Could not copy. Please select the text manually.');
+      }
+    };
+  }
+
+  // Actualizează link-urile dinamic
+  ['input','change'].forEach(ev=>{
+    nameEl.addEventListener(ev, build);
+    emailEl.addEventListener(ev, build);
+    msgEl.addEventListener(ev, build);
   });
-  </script>
+  build(); // inițial
+})();
+</script>
+
 </body>
 </html>
