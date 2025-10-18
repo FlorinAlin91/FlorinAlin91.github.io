@@ -3,8 +3,10 @@
   position: relative;
   height: clamp(560px, 76vh, 900px);
 background:
-  radial-gradient(ellipse at 40% 80%, #ffb733 0%, transparent 55%),
-  radial-gradient(ellipse at 60% 80%, #ff6600 0%, transparent 55%);
+  radial-gradient(1100px 520px at 40% 78%, #ffb733 0%, transparent 55%),
+  radial-gradient(1000px 480px at 62% 80%, #ff6a00 0%, transparent 55%),
+  /* accent albastru fin sus (max 10% opacitate) */
+  radial-gradient(900px 460px at 28% 12%, rgba(70,130,255,.10) 0%, transparent 55%);
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -22,7 +24,9 @@ background:
   z-index: 0;
   opacity: .65; /* mai vizibile */
   #flames-bg {
-  filter: blur(0px) brightness(110%) contrast(120%);
+ #flames-bg{
+  filter: blur(0px) brightness(115%) contrast(125%); /* fără blur */
+  opacity:.85;
 }
   pointer-events: none;
 }
