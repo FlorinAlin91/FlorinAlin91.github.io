@@ -1,110 +1,71 @@
-<!-- ===== Quote request (drop-in, works on iOS) ===== -->
-<section id="quote" class="ms-card">
-  <h2>Mihaila Smart Solutions</h2>
-  <p class="subtitle">Quote request</p>
-
-  <form id="quoteForm" onsubmit="return false;">
-    <label>Your name</label>
-    <input id="qName" type="text" placeholder="Your name" autocomplete="name">
-
-    <label>Email</label>
-    <input id="qEmail" type="email" placeholder="your@email.com" autocomplete="email">
-
-    <label>Message</label>
-    <textarea id="qMsg" rows="5" placeholder="Tell us about your project..."></textarea>
-  </form>
-
-  <!-- Buttons (use <a> so iOS opens apps reliably) -->
-  <a id="btnMailto" class="btn btn-yellow" href="#">Send email</a>
-  <a id="btnGmail"  class="btn btn-red"    href="#" target="_blank" rel="noopener">Open in Gmail</a>
-  <a id="btnOutlk"  class="btn btn-blue"   href="#" target="_blank" rel="noopener">Open in Outlook Web</a>
-  <a id="btnWA"     class="btn btn-green"  href="#" target="_blank" rel="noopener">WhatsApp message</a>
-  <button id="btnCopy" class="btn btn-dark" type="button">Copy message</button>
-
-  <p class="copy" style="opacity:.7;margin-top:10px;">© 2025 Mihaila Smart Solutions</p>
-</section>
-
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mihaila Smart Solutions — Quote</title>
 <style>
-  .ms-card{background:#0b0b0b;border-radius:18px;padding:18px;margin:18px;
-    box-shadow:0 0 0 1px rgba(255,191,43,.25),0 10px 30px rgba(0,0,0,.6)}
-  .ms-card h2{color:#fff;margin:0 0 4px;font-size:22px}
-  .ms-card .subtitle{color:#bbb;margin:0 0 16px}
-  .ms-card label{display:block;color:#cfcfcf;font-size:14px;margin:12px 0 6px}
-  .ms-card input,.ms-card textarea{
+  :root{
+    --gold:#ffbf2b;--red:#e53935;--blue:#1e88e5;--green:#24d366;--bg:#0b0b0b;--fg:#fff;
+  }
+  body{margin:0;background:#000;color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
+  .wrap{max-width:720px;margin:24px auto;padding:16px}
+  .card{background:var(--bg);border-radius:18px;padding:18px;
+        box-shadow:0 0 0 1px rgba(255,191,43,.25),0 10px 30px rgba(0,0,0,.6)}
+  h1{font-size:22px;margin:0 0 6px}
+  .sub{opacity:.8;margin:0 0 16px}
+  label{display:block;font-size:14px;margin:12px 0 6px;color:#cfcfcf}
+  input,textarea{
     width:100%;background:#111;border:1px solid #2a2a2a;color:#fff;border-radius:12px;
     padding:12px 14px;font-size:16px;outline:none
   }
   .btn{display:block;width:100%;text-align:center;padding:14px 16px;border-radius:14px;
     font-weight:700;margin:14px 0 0;text-decoration:none;border:none;cursor:pointer}
-  .btn-yellow{background:#ffbf2b;color:#000}
-  .btn-red{background:#e53935;color:#fff}
-  .btn-blue{background:#1e88e5;color:#fff}
-  .btn-green{background:#24d366;color:#0b2816}
-  .btn-dark{background:#2b2b2b;color:#fff}
+  .yellow{background:var(--gold);color:#000}
+  .red{background:var(--red);color:#fff}
+  .blue{background:var(--blue);color:#fff}
+  .green{background:var(--green);color:#0b2816}
+  .dark{background:#2b2b2b;color:#fff}
+  .copy{opacity:.7;margin-top:10px;text-align:center}
 </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Mihaila Smart Solutions</h1>
+      <p class="sub">Quote request</p>
 
-<script>
-(() => {
-  // ====== SETTINGS — set your email and WhatsApp ======
-  const RECEIVER_EMAIL = "office@mihailasmartsolutions.co"; // ← pune emailul tău
-  const WHATSAPP_E164  = "40721521109"; // ← fără +, ex: "40744XXXXXX"
-  const SUBJECT = "Quote request — Mihaila Smart Solutions";
-  // =====================================================
+      <!-- PURE HTML (fără JS). Deschide aplicația de e-mail. -->
+      <!-- Păstrează enctype="text/plain" ca să bage câmpurile în corpul e-mailului. -->
+      <form action="mailto:office@mihailasmartsolutions.co?subject=Quote%20request%20—%20Mihaila%20Smart%20Solutions"
+            method="post" enctype="text/plain">
+        <label for="name">Your name</label>
+        <input id="name" name="Name" type="text" placeholder="Your name">
 
-  const el = (id) => document.getElementById(id);
-  const nameI = el("qName"), emailI = el("qEmail"), msgI = el("qMsg");
+        <label for="email">Email</label>
+        <input id="email" name="Email" type="email" placeholder="your@email.com">
 
-  function buildBody() {
-    const name = nameI.value.trim() || "(no name)";
-    const email = emailI.value.trim() || "(no email)";
-    const msg = msgI.value.trim() || "(no message)";
-    return Name: ${name}\nEmail: ${email}\n\nMessage:\n${msg};
-  }
+        <label for="msg">Message</label>
+        <textarea id="msg" name="Message" rows="6" placeholder="Tell us about your project..."></textarea>
 
-  function enc(s){ return encodeURIComponent(s); }
+        <button class="btn yellow" type="submit">Send email</button>
+      </form>
 
-  function refreshLinks(){
-    const body = buildBody();
-    // mailto (iOS safe as direct <a href>)
-    el("btnMailto").setAttribute(
-      "href",
-      mailto:${encodeURIComponent(RECEIVER_EMAIL)}?subject=${enc(SUBJECT)}&body=${enc(body)}
-    );
-    // Gmail web
-    el("btnGmail").setAttribute(
-      "href",
-      https://mail.google.com/mail/?view=cm&fs=1&to=${enc(RECEIVER_EMAIL)}&su=${enc(SUBJECT)}&body=${enc(body)}
-    );
-    // Outlook Web
-    el("btnOutlk").setAttribute(
-      "href",
-      https://outlook.office.com/mail/deeplink/compose?to=${enc(RECEIVER_EMAIL)}&subject=${enc(SUBJECT)}&body=${enc(body)}
-    );
-    // WhatsApp
-    el("btnWA").setAttribute(
-      "href",
-      https://wa.me/${WHATSAPP_E164}?text=${enc(body)}
-    );
-  }
+      <!-- Opțiuni fără JS: deschid direct compunerea în Gmail/Outlook/WhatsApp -->
+      <a class="btn red"
+         href="https://mail.google.com/mail/?view=cm&fs=1&to=contact@mihailasmartsolutions.co&su=Quote%20request%20—%20Mihaila%20Smart%20Solutions"
+         target="_blank" rel="noopener">Open in Gmail</a>
 
-  // Update links as the user types
-  ["input","change","keyup"].forEach(evt=>{
-    nameI.addEventListener(evt, refreshLinks);
-    emailI.addEventListener(evt, refreshLinks);
-    msgI.addEventListener(evt, refreshLinks);
-  });
-  refreshLinks();
+      <a class="btn blue"
+         href="https://outlook.office.com/mail/deeplink/compose?to=contact@mihailasmartsolutions.co&subject=Quote%20request%20—%20Mihaila%20Smart%20Solutions"
+         target="_blank" rel="noopener">Open in Outlook Web</a>
 
-  // Copy message
-  el("btnCopy").addEventListener("click", async () => {
-    const body = buildBody();
-    try {
-      await navigator.clipboard.writeText(body);
-      el("btnCopy").textContent = "Copied!";
-      setTimeout(()=>el("btnCopy").textContent="Copy message",1200);
-    } catch {
-      alert("Copied text:\n\n" + body);
-    }
-  });
-})();
-</script>
+      <a class="btn green"
+         href="https://wa.me/40721521109?text=Salut%2C%20vreau%20o%20ofert%C4%83%20pentru%20un%20proiect."
+         target="_blank" rel="noopener">WhatsApp message</a>
+
+      <p class="copy">© 2025 Mihaila Smart Solutions</p>
+    </div>
+  </div>
+</body>
+</html>
