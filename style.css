@@ -193,3 +193,40 @@ html {
 .hero-title {
   -webkit-text-stroke: 0 !important;
 }
+/* HERO title – clean, no duplicate */
+.hero-title{
+  font-size: clamp(44px, 6.5vw, 96px);
+  font-weight: 800;
+  color:#fff;
+  margin:12px 0 8px;
+  letter-spacing:.3px;
+  text-shadow: 0 0 10px rgba(255,191,43,.22);
+  -webkit-text-stroke: 0 !important;
+}
+.hero-title::before,
+.hero-title::after{ content:none !important; }
+/* dacă accidental există două H1-uri consecutive, ascunde al doilea */
+.ms-hero h1 + h1,
+.hero-title + .hero-title{ display:none !important; }
+/* dezactivează orice contur/umbra puternică moștenită */
+.ms-hero h1 *{ text-shadow:none; -webkit-text-stroke:0; }
+/* Logo premium */
+.ms-hero{
+  min-height: 92vh;
+  display:grid; place-items:center; text-align:center;
+  position:relative; padding:6vh 16px;
+}
+.hero-logo{
+  width: clamp(320px, 48vw, 680px); /* mare ✔ */
+  height:auto; margin:0 auto 20px;
+  filter:
+    drop-shadow(0 0 14px rgba(255,191,43,.35))
+    drop-shadow(0 0 28px rgba(255,191,43,.18));
+  transition: transform .4s ease, filter .4s ease;
+}
+.hero-logo:hover{
+  transform: scale(1.02);
+  filter:
+    drop-shadow(0 0 20px rgba(255,191,43,.5))
+    drop-shadow(0 0 40px rgba(255,191,43,.28));
+}
