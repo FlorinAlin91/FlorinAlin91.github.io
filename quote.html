@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get a Quote — Mihaila Smart Solutions</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="assets/css/hero-flames.css">
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    header {
+      padding: 20px 30px;
+      text-align: left;
+    }
+
+    header a {
+      color: #ffbf2b;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    header a:hover {
+      text-decoration: underline;
+    }
+
+    section#quote {
+      position: relative;
+      text-align: center;
+      z-index: 2;
+      padding: 80px 20px;
+    }
+
+    #quote h2 {
+      color: #ffbf2b;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    #quote p {
+      color: #ccc;
+      margin-bottom: 25px;
+    }
+
+    .contact-box {
+      background: rgba(255, 191, 43, 0.05);
+      border: 1px solid rgba(255, 191, 43, 0.25);
+      border-radius: 10px;
+      padding: 20px;
+      margin: 0 auto 30px;
+      max-width: 400px;
+      box-shadow: 0 0 20px rgba(255, 191, 43, 0.1);
+    }
+
+    .contact-box a {
+      color: #ffbf2b;
+      text-decoration: none;
+    }
+
+    .contact-box a:hover {
+      text-decoration: underline;
+    }
+
+    .quote-form {
+      max-width: 400px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 2;
+    }
+
+    .quote-form label {
+      text-align: left;
+      font-size: 0.9rem;
+      color: #ffbf2b;
+    }
+
+    .quote-form input,
+    .quote-form textarea {
+      background: #111;
+      color: #fff;
+      border: 1px solid rgba(255, 191, 43, 0.3);
+      border-radius: 6px;
+      padding: 10px;
+      font-size: 0.95rem;
+      transition: border 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .quote-form input:focus,
+    .quote-form textarea:focus {
+      outline: none;
+      border: 1px solid #ffbf2b;
+      box-shadow: 0 0 8px rgba(255, 191, 43, 0.4);
+    }
+
+    .quote-form button {
+      background-color: #ffbf2b;
+      color: #000;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .quote-form button:hover {
+      background-color: #ffcf5b;
+      transform: translateY(-2px);
+    }
+
+    /* Canvas overlay for flames */
+    #flames-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Background flames canvas -->
+  <canvas id="flames-bg"></canvas>
+
+  <header>
+    <a href="index.html">← Back to Home</a>
+  </header>
+
+  <section id="quote">
+    <h2>Get a quote</h2>
+    <p>Tell us a few details and we’ll get back to you fast.</p>
+
+    <div class="contact-box">
+      <p><strong>Email:</strong> <a href="mailto:office@mihailasmartsolutions.co">office@mihailasmartsolutions.co</a></p>
+      <p><strong>Phone / WhatsApp:</strong> <a href="https://wa.me/40721521109" target="_blank">+40 721 521 109</a></p>
+      <p><strong>Coverage:</strong> EMEA</p>
+    </div>
+
+    <form action="#" method="post" class="quote-form">
+      <label>Your name</label>
+      <input type="text" name="name" placeholder="Your name">
+
+      <label>Email</label>
+      <input type="email" name="email" placeholder="your@email.com">
+
+      <label>Message</label>
+      <textarea name="message" placeholder="How can we help?"></textarea>
+
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <!-- Import same golden flames animation -->
+  <script src="assets/js/hero-flames.js"></script>
+</body>
+</html>
