@@ -230,3 +230,26 @@ html {
     drop-shadow(0 0 20px rgba(255,191,43,.5))
     drop-shadow(0 0 40px rgba(255,191,43,.28));
 }
+/* HERO container */
+.ms-hero{ min-height:92vh; display:grid; place-items:center; text-align:center; }
+
+/* LOGO mare – forțez peste orice stil anterior */
+.hero-logo{
+  width: min(60vw, 65vh) !important;   /* ~jumate de pagină */
+  height:auto !important;
+  display:block; margin:0 auto 20px;
+  filter:
+    drop-shadow(0 0 14px rgba(255,191,43,.35))
+    drop-shadow(0 0 28px rgba(255,191,43,.18));
+}
+/* Titlu curat – fără dubluri, fără stroke */
+.hero-title{
+  font-size:clamp(44px,6.5vw,96px);
+  font-weight:800; color:#fff; margin:12px 0 8px; letter-spacing:.3px;
+  text-shadow:0 0 12px rgba(255,191,43,.22);
+  -webkit-text-stroke:0 !important;
+}
+.hero-title::before,
+.hero-title::after{ content:none !important; }
+.ms-hero h1 + h1{ display:none !important; }         /* dacă rămâne un al 2-lea H1, îl ascund */
+.hero-title *{ text-shadow:none !important; filter:none !important; }
