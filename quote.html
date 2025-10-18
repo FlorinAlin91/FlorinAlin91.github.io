@@ -149,15 +149,20 @@
 
       <button type="submit">Send</button>
     </form>
+    <a id="mailtoLink" href="#" style="display:none">mailto</a>
   </main>
 
   <footer>
     © 2025 <span>Mihaila Smart Solutions</span> — All rights reserved
   </footer>
 
-  <script>
-  document.getElementById('quoteForm').addEventListener('submit', function (e) {
-    e.preventDefault();
+ <script>
+(function () {
+  const form = document.getElementById('quoteForm');
+  const mailtoLink = document.getElementById('mailtoLink');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault(); // nu trimitem POST – doar deschidem clientul de mail
 
     const name = document.getElementById('q-name').value.trim();
     const email = document.getElementById('q-email').value.trim();
@@ -170,15 +175,25 @@
       Message:\n${message}\n\n +
       ---------------------------\n +
       This message was sent from the Mihaila Smart Solutions Quote Form\n +
-      Website: https://mihailasmartsolutions.co\n +
-      Confidential internal communication - do not forward externally.;
+      Website: https://mihailasmartsolutions.co;
 
     const mailto = mailto:office@mihailasmartsolutions.co +
                    ?subject=${encodeURIComponent(subject)} +
                    &body=${encodeURIComponent(body)};
 
-    window.location.href = mailto;
+    // Varianta robustă: setăm href pe o ancoră invizibilă și o „clicuim”
+    try {
+      mailtoLink.setAttribute('href', mailto);
+      mailtoLink.setAttribute('target', '_self'); // iOS preferă _self
+      mailtoLink.click();
+    } catch (err) {
+      // Fallback
+      window.location.href = mailto;
+      // sau, ca ultim fallback:
+      // window.open(mailto, '_self');
+    }
   });
-  </script>
+})();
+</script>
 </body>
 </html>
