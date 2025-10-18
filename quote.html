@@ -1,119 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Get a Quote - Mihaila Smart Solutions</title>
-<style>
-  body{margin:0;background:#0a0a0a;color:#fff;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
-  header{padding:24px 28px}
-  header a{color:#ffbf2b;text-decoration:none;font-weight:600}
-  main{max-width:520px;margin:24px auto;padding:0 16px}
-  h1{color:#ffbf2b;text-align:center}
-  form{margin-top:16px;background:rgba(255,191,43,.05);border:1px solid rgba(255,191,43,.3);border-radius:12px;padding:20px;box-shadow:0 0 18px rgba(255,191,43,.12)}
-  label{display:block;margin:10px 0 6px;color:#ffbf2b;font-weight:600}
-  input,textarea{width:100%;background:#111;border:1px solid rgba(255,191,43,.35);border-radius:8px;color:#fff;padding:12px;outline:none}
-  input:focus,textarea:focus{border-color:#ffbf2b;box-shadow:0 0 10px rgba(255,191,43,.35)}
-  button{width:100%;margin-top:10px;padding:12px 14px;border:none;border-radius:8px;background:linear-gradient(90deg,#ffbf2b,#ff9f00);color:#000;font-weight:800;cursor:pointer}
-  .fb{display:none;margin:14px 0 0;background:rgba(255,191,43,.06);border:1px solid rgba(255,191,43,.35);border-radius:10px;padding:14px;text-align:center}
-  .fb a,.fb button{display:inline-block;margin:6px 6px 0;padding:10px 14px;border-radius:8px;text-decoration:none}
-  .gml{background:#202124;color:#fff}
-  .outl{background:#0e63b6;color:#fff}
-  .cpy{background:transparent;border:1px solid rgba(255,191,43,.5);color:#ffbf2b;cursor:pointer}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get a Quote - Mihaila Smart Solutions</title>
+
+  <!-- Stiluri principale -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="assets/css/hero-flames.css">
+
+  <style>
+    body {
+      background: radial-gradient(ellipse at top, #1a1a1a 0%, #000 100%);
+      color: #fff;
+      font-family: "Inter", sans-serif;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      padding: 30px 40px;
+      text-align: left;
+    }
+
+    header a {
+      color: #ffbf2b;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    header a:hover {
+      text-decoration: underline;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 40px;
+      color: #ffbf2b;
+      font-size: 2.4rem;
+      letter-spacing: 1px;
+      text-shadow: 0 0 10px rgba(255,191,43,0.5), 0 0 20px rgba(255,191,43,0.3);
+    }
+
+    p {
+      text-align: center;
+      color: #bbb;
+      font-size: 1.1rem;
+    }
+
+    form {
+      max-width: 520px;
+      margin: 50px auto;
+      background: rgba(255, 191, 43, 0.04);
+      padding: 40px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 191, 43, 0.25);
+      box-shadow: 0 0 25px rgba(255,191,43,0.15), inset 0 0 10px rgba(255,191,43,0.05);
+      backdrop-filter: blur(4px);
+      transition: 0.3s ease-in-out;
+    }
+
+    form:hover {
+      box-shadow: 0 0 40px rgba(255,191,43,0.3), inset 0 0 15px rgba(255,191,43,0.1);
+      transform: scale(1.01);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #ffbf2b;
+      font-size: 0.95rem;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 18px;
+      border: 1px solid rgba(255, 191, 43, 0.4);
+      border-radius: 8px;
+      background-color: #0e0e0e;
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+      box-shadow: inset 0 0 8px rgba(255,191,43,0.05);
+      transition: all 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #ffbf2b;
+      box-shadow: 0 0 12px rgba(255,191,43,0.4);
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(90deg, #ffbf2b, #ff9f00);
+      color: #000;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px rgba(255,191,43,0.3);
+    }
+
+    button:hover {
+      background: linear-gradient(90deg, #ffcc55, #ffaa22);
+      transform: scale(1.04);
+      box-shadow: 0 0 30px rgba(255,191,43,0.5);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+    footer span {
+      color: #ffbf2b;
+    }
+  </style>
 </head>
+
 <body>
+  <header>
+    <a href="index.html">← Back to Home</a>
+  </header>
 
-<header><a href="index.html">← Back to Home</a></header>
+  <main>
+    <h1>Get a Quote</h1>
+    <p>Fill out the form below and we’ll get back to you fast.</p>
 
-<main>
-  <h1>Get a Quote</h1>
-  <form id="quoteForm" novalidate>
-    <label>Your name</label>
-    <input id="q-name" type="text" placeholder="Your name" required>
+    <form id="quoteForm" class="quote-form">
+      <label>Your name</label>
+      <input id="q-name" type="text" name="name" placeholder="Your name" required>
 
-    <label>Email</label>
-    <input id="q-email" type="email" placeholder="your@email.com" required>
+      <label>Email</label>
+      <input id="q-email" type="email" name="email" placeholder="your@email.com" required>
 
-    <label>Message</label>
-    <textarea id="q-message" rows="5" placeholder="How can we help?" required></textarea>
+      <label>Message</label>
+      <textarea id="q-message" name="message" placeholder="How can we help?" rows="5" required></textarea>
 
-    <button type="submit">Send</button>
-  </form>
+      <button type="submit">Send</button>
+    </form>
+  </main>
 
-  <!-- link invizibil pentru mailto -->
-  <a id="mailtoLink" href="#" style="display:none">mailto</a>
+  <footer>
+    © 2025 <span>Mihaila Smart Solutions</span> — All rights reserved
+  </footer>
 
-  <!-- fallback dacă nu există client de e-mail setat -->
-  <div id="fallbackEmail" class="fb">
-    <p>Dacă nu s-a deschis aplicația de e-mail, folosește una dintre opțiuni:</p>
-    <a id="openGmail" class="gml" target="_blank" rel="noopener">Deschide în Gmail</a>
-    <a id="openOutlook" class="outl" target="_blank" rel="noopener">Deschide în Outlook Web</a>
-    <button id="copyBody" class="cpy" type="button">Copiază mesajul</button>
-  </div>
-</main>
-
-<script>
-(function () {
-  const form     = document.getElementById('quoteForm');
-  const mailtoEl = document.getElementById('mailtoLink');
-  const fbBox    = document.getElementById('fallbackEmail');
-  const gmailA   = document.getElementById('openGmail');
-  const outlookA = document.getElementById('openOutlook');
-  const copyBtn  = document.getElementById('copyBody');
-  const TO       = 'office@mihailasmartsolutions.co';
-
-  const enc = s => encodeURIComponent(s || '');
-
-  form.addEventListener('submit', e => {
+  <script>
+  document.getElementById('quoteForm').addEventListener('submit', function (e) {
     e.preventDefault();
 
-    const name    = document.getElementById('q-name').value.trim();
-    const email   = document.getElementById('q-email').value.trim();
+    const name = document.getElementById('q-name').value.trim();
+    const email = document.getElementById('q-email').value.trim();
     const message = document.getElementById('q-message').value.trim();
 
     const subject = Quote request from ${name || 'website visitor'};
     const body =
-`Name: ${name}
-Email: ${email}
+      Name: ${name}\n +
+      Email: ${email}\n\n +
+      Message:\n${message}\n\n +
+      ---------------------------\n +
+      This message was sent from the Mihaila Smart Solutions Quote Form\n +
+      Website: https://mihailasmartsolutions.co\n +
+      Confidential internal communication - do not forward externally.;
 
-Message:
-${message}
+    const mailto = mailto:office@mihailasmartsolutions.co +
+                   ?subject=${encodeURIComponent(subject)} +
+                   &body=${encodeURIComponent(body)};
 
----------------------------
-This message was sent from the Mihaila Smart Solutions Quote Form
-Website: https://mihailasmartsolutions.co`;
-
-    // 1) încearcă mailto (client local)
-    const mailtoURL = mailto:${TO}?subject=${enc(subject)}&body=${enc(body)};
-    try {
-      mailtoEl.setAttribute('href', mailtoURL);
-      mailtoEl.setAttribute('target', '_self'); // iOS preferă _self
-      mailtoEl.click();
-    } catch (_) {}
-
-    // 2) pregătește fallback Gmail / Outlook Web + Copy
-    const gmailURL   = https://mail.google.com/mail/?view=cm&fs=1&to=${enc(TO)}&su=${enc(subject)}&body=${enc(body)};
-    const outlookURL = https://outlook.office.com/mail/deeplink/compose?to=${enc(TO)}&subject=${enc(subject)}&body=${enc(body)};
-
-    gmailA.href   = gmailURL;
-    outlookA.href = outlookURL;
-
-    fbBox.style.display = 'block';
-    fbBox.scrollIntoView({behavior:'smooth', block:'center'});
-
-    copyBtn.onclick = async () => {
-      try {
-        await navigator.clipboard.writeText(body);
-        copyBtn.textContent = 'Copiat ✅';
-        setTimeout(() => copyBtn.textContent = 'Copiază mesajul', 2000);
-      } catch (err) {
-        alert('Nu am putut copia. Selectează manual textul.');
-      }
-    };
+    window.location.href = mailto;
   });
-})();
-</script>
-
+  </script>
 </body>
 </html>
