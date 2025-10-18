@@ -1,223 +1,110 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Get a Quote - Mihaila Smart Solutions</title>
+<!-- ===== Quote request (drop-in, works on iOS) ===== -->
+<section id="quote" class="ms-card">
+  <h2>Mihaila Smart Solutions</h2>
+  <p class="subtitle">Quote request</p>
+
+  <form id="quoteForm" onsubmit="return false;">
+    <label>Your name</label>
+    <input id="qName" type="text" placeholder="Your name" autocomplete="name">
+
+    <label>Email</label>
+    <input id="qEmail" type="email" placeholder="your@email.com" autocomplete="email">
+
+    <label>Message</label>
+    <textarea id="qMsg" rows="5" placeholder="Tell us about your project..."></textarea>
+  </form>
+
+  <!-- Buttons (use <a> so iOS opens apps reliably) -->
+  <a id="btnMailto" class="btn btn-yellow" href="#">Send email</a>
+  <a id="btnGmail"  class="btn btn-red"    href="#" target="_blank" rel="noopener">Open in Gmail</a>
+  <a id="btnOutlk"  class="btn btn-blue"   href="#" target="_blank" rel="noopener">Open in Outlook Web</a>
+  <a id="btnWA"     class="btn btn-green"  href="#" target="_blank" rel="noopener">WhatsApp message</a>
+  <button id="btnCopy" class="btn btn-dark" type="button">Copy message</button>
+
+  <p class="copy" style="opacity:.7;margin-top:10px;">© 2025 Mihaila Smart Solutions</p>
+</section>
+
 <style>
-  :root{
-    --gold:#ffbf2b;
-    --gold-soft:rgba(255,191,43,.35);
-    --bg:#000;
+  .ms-card{background:#0b0b0b;border-radius:18px;padding:18px;margin:18px;
+    box-shadow:0 0 0 1px rgba(255,191,43,.25),0 10px 30px rgba(0,0,0,.6)}
+  .ms-card h2{color:#fff;margin:0 0 4px;font-size:22px}
+  .ms-card .subtitle{color:#bbb;margin:0 0 16px}
+  .ms-card label{display:block;color:#cfcfcf;font-size:14px;margin:12px 0 6px}
+  .ms-card input,.ms-card textarea{
+    width:100%;background:#111;border:1px solid #2a2a2a;color:#fff;border-radius:12px;
+    padding:12px 14px;font-size:16px;outline:none
   }
-  html,body{height:100%}
-  body{
-    margin:0;
-    background: var(--bg);
-    color:#fff;
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    display:flex; align-items:center; justify-content:center;
-    overflow:hidden;
-  }
-
-  /* Phoenix flames background */
-  #phoenix-flames{
-    position:fixed; inset:0;
-    z-index:0 !important;
-    pointer-events:none !important; /* <— so clicks go through */
-    background: radial-gradient(1200px 600px at 50% 120%,
-      rgba(255,191,43,.15), transparent 70%) , #000;
-  }
-
-  .glow-top{
-    position:fixed; left:50%; top:-120px; transform:translateX(-50%);
-    width:1200px; height:240px; filter:blur(70px); opacity:.45;
-    background:radial-gradient(ellipse at center, rgba(255,191,43,.35), transparent 60%);
-    z-index:1; pointer-events:none;
-  }
-
-  /* Content wrapper */
-  .wrap{
-    position:relative; z-index:2; width:100%;
-    display:flex; justify-content:center; padding:24px;
-  }
-
-  .form-box{
-    width:min(92vw,480px);
-    background: rgba(20,20,20,.92);
-    border:1px solid rgba(255,191,43,.25);
-    border-radius:18px;
-    padding:22px 20px;
-    box-shadow:
-      0 0 0 1px rgba(255,191,43,.15) inset,
-      0 10px 40px rgba(0,0,0,.6),
-      0 0 40px var(--gold-soft);
-  }
-
-  .brand{
-    display:flex; align-items:center; gap:12px; margin-bottom:14px;
-  }
-  .brand .dot{width:14px;height:14px;border-radius:50%;
-    background:radial-gradient(circle, var(--gold), #8a5d00); box-shadow:0 0 16px var(--gold);}
-  .brand h2{margin:0;font-size:20px; letter-spacing:.4px;}
-  .tag{font-size:12px; opacity:.75}
-
-  label{display:block; font-size:13px; opacity:.8; margin:8px 0 4px}
-  input, textarea{
-    width:100%; padding:12px 12px; border-radius:10px; border:1px solid rgba(255,255,255,.12);
-    background:#0d0d0d; color:#fff; font-size:15px; outline:none;
-    box-shadow: inset 0 0 0 9999px rgba(255,191,43,0);
-    transition:border .2s, box-shadow .2s, transform .06s;
-  }
-  input:focus, textarea:focus{border-color:rgba(255,191,43,.55); box-shadow:0 0 0 3px rgba(255,191,43,.15)}
-  textarea{resize:none; height:110px}
-
-  .btn{width:100%; padding:12px 14px; border:0; border-radius:12px; font-weight:700; cursor:pointer;
-    margin-top:10px; font-size:15px; transition:transform .06s, box-shadow .2s; }
-  .btn:hover{transform:translateY(-1px)}
-  .btn:active{transform:translateY(0)}
-  .gold{background:var(--gold); color:#111; box-shadow:0 6px 20px rgba(255,191,43,.35)}
-  .gmail{background:#d93025; color:#fff}
-  .outlook{background:#0078d4; color:#fff}
-  .wa{background:#25d366; color:#111}
-  .copy{background:#3a3a3a; color:#fff}
-
-  .foot{margin-top:12px; font-size:12px; opacity:.7; text-align:center}
+  .btn{display:block;width:100%;text-align:center;padding:14px 16px;border-radius:14px;
+    font-weight:700;margin:14px 0 0;text-decoration:none;border:none;cursor:pointer}
+  .btn-yellow{background:#ffbf2b;color:#000}
+  .btn-red{background:#e53935;color:#fff}
+  .btn-blue{background:#1e88e5;color:#fff}
+  .btn-green{background:#24d366;color:#0b2816}
+  .btn-dark{background:#2b2b2b;color:#fff}
 </style>
-</head>
-<body>
-
-<canvas id="phoenix-flames"></canvas>
-<div class="glow-top"></div>
-
-<div class="wrap">
-  <div class="form-box" id="quoteFormBox">
-    <div class="brand">
-      <span class="dot"></span>
-      <div>
-        <h2>Mihaila Smart Solutions</h2>
-        <div class="tag">Quote request</div>
-      </div>
-    </div>
-
-    <label for="name">Your name</label>
-    <input id="name" placeholder="Your name">
-
-    <label for="email">Email</label>
-    <input id="email" type="email" placeholder="your@email.com">
-
-    <label for="message">Message</label>
-    <textarea id="message" placeholder="Tell us about your project..."></textarea>
-
-    <button class="btn gold" id="sendMailBtn">Send email</button>
-    <button class="btn gmail" id="gmailBtn">Open in Gmail</button>
-    <button class="btn outlook" id="outlookBtn">Open in Outlook Web</button>
-    <button class="btn wa" id="whatsappBtn">WhatsApp message</button>
-    <button class="btn copy" id="copyBtn">Copy message</button>
-
-    <div class="foot">© 2025 Mihaila Smart Solutions</div>
-  </div>
-</div>
 
 <script>
-/* ====== FORM ACTIONS ====== */
-const TO_EMAIL = 'office@mihailasmartsolutions.com';
-const WHATSAPP_NUMBER = '40700000000'; // change if needed (no +)
-
-const enc = s => encodeURIComponent(s);
-const getBody = () => {
-  const n = document.getElementById('name').value.trim();
-  const e = document.getElementById('email').value.trim();
-  const m = document.getElementById('message').value.trim();
-  return Name: ${n}\nEmail: ${e}\nMessage: ${m};
-};
-
-document.getElementById('sendMailBtn').onclick = () => {
-  const body = enc(getBody());
-  location.href = mailto:${TO_EMAIL}?subject=${enc('Quote Request')}&body=${body};
-};
-document.getElementById('gmailBtn').onclick = () => {
-  const body = enc(getBody());
-  open(https://mail.google.com/mail/?view=cm&fs=1&to=${TO_EMAIL}&su=${enc('Quote Request')}&body=${body},'_blank');
-};
-document.getElementById('outlookBtn').onclick = () => {
-  const body = enc(getBody());
-  open(https://outlook.office.com/mail/deeplink/compose?to=${TO_EMAIL}&subject=${enc('Quote Request')}&body=${body},'_blank');
-};
-document.getElementById('whatsappBtn').onclick = () => {
-  open(https://wa.me/${WHATSAPP_NUMBER}?text=${enc('Quote Request:\n' + getBody())},'_blank');
-};
-document.getElementById('copyBtn').onclick = async () => {
-  await navigator.clipboard.writeText(getBody());
-  alert('Copied!');
-};
-
-/* ====== PHOENIX FLAMES CANVAS (lightweight, non-blocking) ====== */
 (() => {
-  const c = document.getElementById('phoenix-flames');
-  const ctx = c.getContext('2d', { alpha:true });
-  let w, h, dpr = Math.min(devicePixelRatio||1, 2);
+  // ====== SETTINGS — set your email and WhatsApp ======
+  const RECEIVER_EMAIL = "contact@mihailasmartsolutions.co"; // ← pune emailul tău
+  const WHATSAPP_E164  = "40700000000"; // ← fără +, ex: "40744XXXXXX"
+  const SUBJECT = "Quote request — Mihaila Smart Solutions";
+  // =====================================================
 
-  function resize(){
-    w = c.clientWidth = innerWidth;
-    h = c.clientHeight = innerHeight;
-    c.width = Math.floor(w * dpr);
-    c.height = Math.floor(h * dpr);
-    ctx.setTransform(dpr,0,0,dpr,0,0);
-  }
-  addEventListener('resize', resize, { passive:true });
-  resize();
+  const el = (id) => document.getElementById(id);
+  const nameI = el("qName"), emailI = el("qEmail"), msgI = el("qMsg");
 
-  const sparks = Array.from({length: 120}, () => seed());
-
-  function seed(){
-    return {
-      x: Math.random()*w,
-      y: h + Math.random()*h*0.25,
-      r: 1 + Math.random()*2.6,
-      vy: 0.6 + Math.random()*1.8,
-      vx: (Math.random()-.5)*0.6,
-      life: 0,
-      glow: Math.random()*0.6 + 0.4
-    };
+  function buildBody() {
+    const name = nameI.value.trim() || "(no name)";
+    const email = emailI.value.trim() || "(no email)";
+    const msg = msgI.value.trim() || "(no message)";
+    return Name: ${name}\nEmail: ${email}\n\nMessage:\n${msg};
   }
 
-  function step(){
-    ctx.clearRect(0,0,w,h);
+  function enc(s){ return encodeURIComponent(s); }
 
-    // soft gradient “wings”
-    const grad = ctx.createRadialGradient(w*0.5, h*1.1, 40, w*0.5, h*0.8, h*0.9);
-    grad.addColorStop(0, 'rgba(255,191,43,0.25)');
-    grad.addColorStop(0.6,'rgba(255,191,43,0.06)');
-    grad.addColorStop(1, 'rgba(0,0,0,0)');
-    ctx.fillStyle = grad;
-    ctx.fillRect(0,0,w,h);
+  function refreshLinks(){
+    const body = buildBody();
+    // mailto (iOS safe as direct <a href>)
+    el("btnMailto").setAttribute(
+      "href",
+      mailto:${encodeURIComponent(RECEIVER_EMAIL)}?subject=${enc(SUBJECT)}&body=${enc(body)}
+    );
+    // Gmail web
+    el("btnGmail").setAttribute(
+      "href",
+      https://mail.google.com/mail/?view=cm&fs=1&to=${enc(RECEIVER_EMAIL)}&su=${enc(SUBJECT)}&body=${enc(body)}
+    );
+    // Outlook Web
+    el("btnOutlk").setAttribute(
+      "href",
+      https://outlook.office.com/mail/deeplink/compose?to=${enc(RECEIVER_EMAIL)}&subject=${enc(SUBJECT)}&body=${enc(body)}
+    );
+    // WhatsApp
+    el("btnWA").setAttribute(
+      "href",
+      https://wa.me/${WHATSAPP_E164}?text=${enc(body)}
+    );
+  }
 
-    for (let p of sparks){
-      p.x += p.vx + Math.sin((p.life+p.r).06).4;
-      p.y -= p.vy + (p.r*.04);
-      p.life += 1;
+  // Update links as the user types
+  ["input","change","keyup"].forEach(evt=>{
+    nameI.addEventListener(evt, refreshLinks);
+    emailI.addEventListener(evt, refreshLinks);
+    msgI.addEventListener(evt, refreshLinks);
+  });
+  refreshLinks();
 
-      // draw
-      const alpha = Math.max(0, 0.25 + 0.6*Math.sin(p.life*0.02)) * p.glow;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
-      ctx.fillStyle = rgba(255,191,43,${alpha});
-      ctx.shadowBlur = 25;
-      ctx.shadowColor = 'rgba(255,191,43,0.55)';
-      ctx.fill();
-
-      // reset if off screen
-      if (p.y < -40 || p.x < -40 || p.x > w+40){
-        const fresh = seed(); fresh.y = h + Math.random()*120; fresh.x = Math.random()*w;
-        Object.assign(p, fresh);
-      }
+  // Copy message
+  el("btnCopy").addEventListener("click", async () => {
+    const body = buildBody();
+    try {
+      await navigator.clipboard.writeText(body);
+      el("btnCopy").textContent = "Copied!";
+      setTimeout(()=>el("btnCopy").textContent="Copy message",1200);
+    } catch {
+      alert("Copied text:\n\n" + body);
     }
-
-    requestAnimationFrame(step);
-  }
-  step();
+  });
 })();
 </script>
-</body>
-</html>
