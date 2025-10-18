@@ -22,7 +22,9 @@
   height: 100%;
   z-index: 0;
   opacity: .65; /* mai vizibile */
-  filter: blur(14px) brightness(125%) contrast(130%);
+  #flames-bg {
+  filter: blur(0px) brightness(110%) contrast(120%);
+}
   pointer-events: none;
 }
 
