@@ -15,33 +15,33 @@ background:
   isolation: isolate;
 }
 
-/* canvas sub overlay */
-.ms-hero #flames-bg {
+/* HERO layout */
+.ms-hero { position: relative; }
+
+/* Canvas BACKGROUND (behind everything) */
+#flames-bg{
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  opacity: .65; /* mai vizibile */
-  #flames-bg {
- #flames-bg{
-  filter: blur(0px) brightness(115%) contrast(125%); /* fără blur */
-  opacity:.85;
-}
-  pointer-events: none;
+  z-index: 0;              /* behind */
+  pointer-events: none;     /* never block clicks */
+  filter: none;             /* no blur */
+  opacity: .9;
 }
 
-/* overlay „premium” */
-.hero-overlay {
+/* Content OVER the canvas */
+.hero-overlay{
   position: relative;
-  z-index: 2;
-  text-align: center;
+  z-index: 2;               /* above */
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
   padding: 20px;
+  backdrop-filter: none;    /* prevent accidental blur of text */
 }
+
+/* Ensure nothing inside overlay is blurred */
+.hero-overlay *{ filter: none !important; }
 
 /* LOGO mai mare pe desktop, se micșorează pe mobil */
 .hero-logo {
