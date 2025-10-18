@@ -3,10 +3,9 @@
   position: relative;
   height: clamp(560px, 76vh, 900px);
 background:
-  radial-gradient(1100px 520px at 40% 78%, #ffb733 0%, transparent 55%),
+  radial-gradient(1200px 520px at 40% 78%, #ffb733 0%, transparent 55%),
   radial-gradient(1000px 480px at 62% 80%, #ff6a00 0%, transparent 55%),
-  /* accent albastru fin sus (max 10% opacitate) */
-  radial-gradient(900px 460px at 28% 12%, rgba(70,130,255,.10) 0%, transparent 55%);
+  radial-gradient(900px 460px at 28% 12%, rgba(70,130,255,.10) 0%, transparent 55%); /* accent albastru fin */
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -15,33 +14,14 @@ background:
   isolation: isolate;
 }
 
-/* HERO layout */
-.ms-hero { position: relative; }
-
-/* Canvas BACKGROUND (behind everything) */
+.ms-hero{ position:relative; }
 #flames-bg{
-  position: absolute;
-  inset: 0;
-  z-index: 0;              /* behind */
-  pointer-events: none;     /* never block clicks */
-  filter: none;             /* no blur */
-  opacity: .9;
+  position:absolute; inset:0; z-index:0;
+  pointer-events:none;
+  filter:none !important;         /* scoate BLUR-ul */
+  opacity:.9;
 }
-
-/* Content OVER the canvas */
-.hero-overlay{
-  position: relative;
-  z-index: 2;               /* above */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  padding: 20px;
-  backdrop-filter: none;    /* prevent accidental blur of text */
-}
-
-/* Ensure nothing inside overlay is blurred */
-.hero-overlay *{ filter: none !important; }
+.hero-overlay{ position:relative; z-index:2; }
 
 /* LOGO mai mare pe desktop, se micșorează pe mobil */
 .hero-logo {
