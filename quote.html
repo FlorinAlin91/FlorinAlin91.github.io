@@ -138,6 +138,16 @@
     <p>Fill out the form below and we’ll get back to you fast.</p>
 
     <form id="quoteForm" class="quote-form">
+      <a id="mailtoLink" href="#" style="display:none">mailto</a>
+
+<div id="fallbackEmail" style="display:none; max-width:520px; margin:16px auto; padding:14px; border-radius:10px; border:1px solid rgba(255,191,43,.35); background:rgba(255,191,43,.06); color:#ddd; text-align:center">
+  <p style="margin:0 0 10px">Dacă nu s-a deschis aplicația de e-mail, folosește una din opțiunile de mai jos:</p>
+  <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap">
+    <a id="openGmail"   target="_blank" style="padding:10px 14px; border-radius:8px; background:#202124; color:#fff; text-decoration:none;">Deschide în Gmail</a>
+    <a id="openOutlook" target="_blank" style="padding:10px 14px; border-radius:8px; background:#0e63b6; color:#fff; text-decoration:none;">Deschide în Outlook Web</a>
+    <button id="copyBody" type="button" style="padding:10px 14px; border-radius:8px; border:1px solid rgba(255,191,43,.5); background:transparent; color:#ffbf2b; cursor:pointer">Copiază mesajul</button>
+  </div>
+</div>
       <label>Your name</label>
       <input id="q-name" type="text" name="name" placeholder="Your name" required>
 
@@ -158,40 +168,66 @@
 
  <script>
 (function () {
-  const form = document.getElementById('quoteForm');
-  const mailtoLink = document.getElementById('mailtoLink');
+  const form       = document.getElementById('quoteForm');
+  const mailtoA    = document.getElementById('mailtoLink');
+  const fbBox      = document.getElementById('fallbackEmail');
+  const gmailA     = document.getElementById('openGmail');
+  const outlookA   = document.getElementById('openOutlook');
+  const copyBtn    = document.getElementById('copyBody');
+
+  function enc(s){ return encodeURIComponent(s || ''); }
 
   form.addEventListener('submit', function (e) {
-    e.preventDefault(); // nu trimitem POST – doar deschidem clientul de mail
+    e.preventDefault();
 
-    const name = document.getElementById('q-name').value.trim();
-    const email = document.getElementById('q-email').value.trim();
-    const message = document.getElementById('q-message').value.trim();
+    const name    = (document.getElementById('q-name').value || '').trim();
+    const email   = (document.getElementById('q-email').value || '').trim();
+    const message = (document.getElementById('q-message').value || '').trim();
 
     const subject = Quote request from ${name || 'website visitor'};
     const body =
-      Name: ${name}\n +
-      Email: ${email}\n\n +
-      Message:\n${message}\n\n +
-      ---------------------------\n +
-      This message was sent from the Mihaila Smart Solutions Quote Form\n +
-      Website: https://mihailasmartsolutions.co;
+`Name: ${name}
+Email: ${email}
 
-    const mailto = mailto:office@mihailasmartsolutions.co +
-                   ?subject=${encodeURIComponent(subject)} +
-                   &body=${encodeURIComponent(body)};
+Message:
+${message}
 
-    // Varianta robustă: setăm href pe o ancoră invizibilă și o „clicuim”
+---------------------------
+This message was sent from the Mihaila Smart Solutions Quote Form
+Website: https://mihailasmartsolutions.co`;
+
+    const to = 'office@mihailasmartsolutions.co';
+
+    // 1) încercăm mailto (client local)
+    const mailtoURL = mailto:${to}?subject=${enc(subject)}&body=${enc(body)};
     try {
-      mailtoLink.setAttribute('href', mailto);
-      mailtoLink.setAttribute('target', '_self'); // iOS preferă _self
-      mailtoLink.click();
-    } catch (err) {
-      // Fallback
-      window.location.href = mailto;
-      // sau, ca ultim fallback:
-      // window.open(mailto, '_self');
+      mailtoA.setAttribute('href', mailtoURL);
+      mailtoA.setAttribute('target', '_self');
+      mailtoA.click();
+    } catch(_) {
+      // ignore
     }
+
+    // 2) pregătim fallback (Gmail & Outlook Web) și îl afișăm
+    const gmailURL   = https://mail.google.com/mail/?view=cm&fs=1&to=${enc(to)}&su=${enc(subject)}&body=${enc(body)};
+    const outlookURL = https://outlook.office.com/mail/deeplink/compose?to=${enc(to)}&subject=${enc(subject)}&body=${enc(body)};
+
+    gmailA.href   = gmailURL;
+    outlookA.href = outlookURL;
+
+    fbBox.style.display = 'block';
+    fbBox.scrollIntoView({behavior:'smooth', block:'center'});
+
+    // copy to clipboard
+    copyBtn.onclick = async () => {
+      try{
+        await navigator.clipboard.writeText(body);
+        copyBtn.textContent = 'Copiat ✅';
+        setTimeout(() => copyBtn.textContent = 'Copiază mesajul', 2000);
+      }catch(err){
+        alert('Nu am putut copia. Selectează manual textul din e-mail.');
+      }
+    };
   });
 })();
 </script>
