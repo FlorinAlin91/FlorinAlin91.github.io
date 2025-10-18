@@ -144,3 +144,29 @@ html {
   background-color: #ffcf5b;
   transform: translateY(-2px);
 }
+/* === HERO SECTION - LOGO PREMIUM === */
+.ms-hero {
+  min-height: 92vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  position: relative;
+  padding: 6vh 16px;
+}
+
+.hero-logo {
+  width: clamp(260px, 50vw, 560px);  /* ~jumate din ecran */
+  height: auto;
+  margin: 0 auto 20px;
+  filter:
+    drop-shadow(0 0 14px rgba(255,191,43,.35))
+    drop-shadow(0 0 28px rgba(255,191,43,.18));
+  transition: transform .4s ease, filter .4s ease;
+}
+
+.hero-logo:hover {
+  transform: scale(1.03);
+  filter:
+    drop-shadow(0 0 20px rgba(255,191,43,.5))
+    drop-shadow(0 0 40px rgba(255,191,43,.3));
+}
